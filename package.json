@@ -6,9 +6,10 @@
     "types": "yarn workspace types",
     "scrapers": "yarn workspace scrapers",
     "dev:start": "concurrently \"yarn backend dev:start\" \"yarn frontend dev:start\"",
+    "dev:scrapers": "yarn scrapers dev:start",
     "prod:build": "yarn scrapers prod:build && yarn backend prod:build && yarn frontend prod:build && yarn types prod:build",
-    "prod:start": "yarn backend prod:start",
-    "prod:start_scrapers": "yarn scrapers prod:start"
+    "prod:server": "yarn backend prod:start",
+    "prod:scrapers": "yarn scrapers prod:start"
   },
   "workspaces": [
     "packages/*"
