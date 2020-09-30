@@ -1,0 +1,10 @@
+@import "../abstracts/mixins";
+@import "../abstracts/variables";
+
+.menu {
+  font-family: $menuFont;
+}
+
+.body {
+  font-family: $bodyFont;
+}

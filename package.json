@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "backend": "yarn workspace backend",
+    "frontend": "yarn workspace frontend",
+    "types": "yarn workspace types",
+    "scrapers": "yarn workspace scrapers",
+    "dev:start": "concurrently \"yarn backend dev:start\" \"yarn frontend dev:start\"",
+    "prod:build": "yarn scrapers prod:build && yarn backend prod:build && yarn frontend prod:build && yarn types prod:build",
+    "prod:start": "yarn backend prod:start",
+    "prod:start_scrapers": "yarn scrapers prod:start"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  }
+}

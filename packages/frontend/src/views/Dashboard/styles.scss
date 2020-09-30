@@ -1,0 +1,31 @@
+@import "../../styles/index.scss";
+
+.colWrapper {
+  .filter {
+    margin: $l 0;
+  }
+  .results-header {
+    position: sticky;
+    background: white;
+    text-align: center;
+    top: 0;
+  }
+
+  .buttons {
+    margin-top: $s;
+
+    .btn {
+      color: white;
+      border: none;
+      background: $primaryColor;
+      font-size: $m;
+      border-radius: 2px;
+      padding: $xs;
+      margin: 0 $s 0 0;
+      font-family: $menuFont;
+      &:hover {
+        background: $primaryColorDark;
+      }
+    }
+  }
+}

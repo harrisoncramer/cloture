@@ -1,0 +1,9 @@
+@import "../../styles/index.scss";
+
+.loadingSpinner {
+  margin-top: $l;
+  div {
+    margin: 0 auto;
+    display: block;
+  }
+}

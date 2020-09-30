@@ -1,0 +1,36 @@
+@import "../../styles/index.scss";
+
+.c1 {
+  font-family: $menuFont;
+  button {
+    font-family: $menuFont;
+  }
+
+  .react-calendar__navigation {
+    .react-calendar__navigation__label {
+      background: white;
+      color: black;
+      font-size: $m;
+    }
+  }
+
+  .react-calendar__month-view__weekdays__weekday {
+    //font-size: $m;
+    color: rgb(15, 70, 15);
+  }
+
+  .react-calendar__tile--active {
+    background: $primaryColor;
+    color: white;
+  }
+
+  .react-calendar__tile--active:enabled:hover,
+  .react-calendar__tile--active:enabled:focus {
+    background: $primaryColorDark;
+  }
+
+  .react-calendar__tile,
+  .react-calendar__month-view__days__day {
+    font-size: $m;
+  }
+}

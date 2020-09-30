@@ -1,0 +1,19 @@
+{
+  "apps": [
+    {
+      "name": "schedulers",
+      "script": "./build/index.js",
+      "out_file": "./logs/schedulers.log",
+      "error_file": "./logs/schedulers.err",
+      "log_file": "./logs/schedulers.combined",
+      "merge_logs": true,
+      "time": true,
+      "timestamp": "YYYY-MM-DD HH:mm",
+      "env_production": {
+        "NODE_ENV": "production"
+      },
+      "instances": 0,
+      "exec_mode": "cluster"
+    }
+  ]
+}

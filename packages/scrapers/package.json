@@ -1,0 +1,37 @@
+{
+  "name": "scrapers",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev:start": "nodemon",
+    "prod:build": "tsc",
+    "dev:debug": "tsc && NODE_ENV=development node --inspect-brk build/index.js",
+    "prod:deploy": "tsc && scp -r ./build",
+    "prod:start": "pm2 start ecosystem.config.json --env production"
+  },
+  "dependencies": {
+    "types": "1.0.0",
+    "@typegoose/typegoose": "^7.4.1",
+    "@types/jquery": "^3.5.1",
+    "@types/node": "^14.11.2",
+    "@types/puppeteer": "^3.0.2",
+    "@types/random-useragent": "^0.3.0",
+    "bull": "^3.14.0",
+    "dotenv": "^8.2.0",
+    "eslint-plugin-react": "^7.19.0",
+    "graphql": "^15.3.0",
+    "mongoose": "^5.9.15",
+    "puppeteer": "^5.3.1",
+    "random-useragent": "^0.5.0",
+    "redis": "^3.0.2",
+    "type-graphql": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/bull": "^3.14.2",
+    "@types/mongoose": "^5.7.36",
+    "@types/redis": "^2.8.27",
+    "eslint": "^6.8.0",
+    "nodemon": "^2.0.3"
+  }
+}

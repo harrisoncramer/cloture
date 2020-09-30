@@ -1,0 +1,50 @@
+@import "../../styles/index.scss";
+
+.header {
+  position: sticky;
+  z-index: 1201;
+  top: 0;
+  left: 0;
+  background-color: $primaryColor;
+  padding: $s;
+  .MuiSvgIcon-root {
+    color: white;
+  }
+
+  nav {
+    @include flex-left;
+
+    h1.mainTitle {
+      font-family: $titleFont;
+      font-size: $h1FontSize;
+      color: white;
+      margin: 0;
+    }
+
+    .menuButton {
+      margin-right: $s;
+    }
+  }
+}
+
+.drawer {
+  .MuiPaper-root {
+    width: 200px;
+    .close {
+      margin-right: auto;
+      margin-left: 0;
+    }
+    ul {
+      list-style-type: none;
+      padding: $m;
+      margin: 0;
+      a {
+        @include menu;
+
+        text-decoration: none;
+        color: black;
+        @include no-margin-padding;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@import "../../styles/abstracts/variables";
+.about-wrapper {
+  padding: $s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.about-paragraph {
+  max-width: 750px;
+  margin: $s;
+}

@@ -1,0 +1,10 @@
+@import "../../styles/index.scss";
+
+.checkbox-root {
+  margin: 0 $xs;
+  display: flex;
+  flex-direction: row;
+  label {
+    font-family: $menuFont;
+  }
+}

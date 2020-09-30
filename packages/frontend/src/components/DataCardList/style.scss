@@ -1,0 +1,18 @@
+@import "../../styles/index.scss";
+
+.card {
+  font-family: $menuFont;
+  margin: $s;
+  margin-left: 0;
+  .title {
+    padding: $s;
+    font-weight: 500;
+  }
+  .content-container {
+    padding: $s;
+    p {
+      margin: 0;
+    }
+  }
+}
+

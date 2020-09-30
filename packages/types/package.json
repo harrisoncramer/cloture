@@ -1,0 +1,13 @@
+{
+  "name": "types",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@typegoose/typegoose": "^7.4.1",
+    "type-graphql": "^1.0.0"
+  },
+  "scripts": {
+    "prod:build": "tsc"
+  }
+}

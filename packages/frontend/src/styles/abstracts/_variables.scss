@@ -1,0 +1,37 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+
+$titleFont: "Bebas Neue";
+$menuFont: "Raleway";
+$bodyFont: "Helvetica";
+$h1FontSize: 2.5em;
+
+$fontSizeSmall: 14px;
+
+// Colors
+$primaryColor: #6d699d;
+$primaryColorDark: #676394;
+$primaryColorLight: #efedff;
+$secondaryColor: #329d69;
+$errorColor: red;
+$backgroundColor: #f3f3f3;
+
+// Spacing
+$xs: 5px;
+$s: 10px;
+$m: 15px;
+$l: 20px;
+$xl: 30px;
+
+// Sizing
+$headerHeight: 65px;
+$footerHeight: 30px;
+
+:export {
+  primaryColor: $primaryColor;
+  primaryColorDark: $primaryColorDark;
+  primaryColorLight: $primaryColorLight;
+  secondaryColor: $secondaryColor;
+}

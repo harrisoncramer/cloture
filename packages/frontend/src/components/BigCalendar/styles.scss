@@ -1,0 +1,41 @@
+@import "react-big-calendar/lib/sass/styles";
+@import "../../styles/abstracts/variables";
+
+.big-calendar-wrapper {
+  font-family: $menuFont;
+}
+
+.big-calendar {
+  margin: $m;
+  height: 80vh;
+}
+
+.rbc-event {
+  font-family: $bodyFont;
+  font-size: $fontSizeSmall;
+  border: none;
+}
+.rbc-label {
+  font-family: $menuFont;
+  font-size: $fontSizeSmall;
+}
+
+.rbc-toolbar .rbc-toolbar-label {
+  padding: 0;
+}
+
+.collection-senatecommittee {
+  background-color: $primaryColorDark;
+}
+.isMagic {
+  &:hover {
+    z-index: 1000;
+    //width: 100%;
+    //height: 100%;
+  }
+}
+
+.collection-housecommittee {
+  background-color: $primaryColorLight;
+  color: black;
+}

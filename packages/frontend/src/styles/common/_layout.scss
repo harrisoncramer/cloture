@@ -1,0 +1,28 @@
+@import "../abstracts/mixins";
+
+.colWrapper {
+  display: flex;
+  margin: $s;
+  flex-direction: column;
+  @include breakpoint(sm) {
+    flex-direction: row;
+  }
+}
+
+.col {
+  flex: 1;
+  padding: $s;
+  max-width: 350px;
+  // For right column only...
+  &.right {
+    max-width: none;
+    height: 85vh;
+    overflow: auto;
+    flex: 3;
+  }
+}
+
+.col-header {
+  font-family: $menuFont;
+}
+

@@ -1,0 +1,19 @@
+{
+    "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "commonjs",
+    "lib": [
+      "ES2018",
+      "ESNext.AsyncIterable"
+    ],
+    "allowJs": true,
+    "rootDir": "src",
+    "outDir": "build",
+    "noImplicitAny": true,
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false,
+    "experimentalDecorators": true
+  }
+}

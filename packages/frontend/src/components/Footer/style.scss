@@ -1,0 +1,10 @@
+@import "../../styles/index.scss";
+.footer {
+  position: fixed;
+  bottom: 0;
+  color: black;
+  background: white;
+  padding: $s;
+  width: 100%;
+  text-align: center;
+}
