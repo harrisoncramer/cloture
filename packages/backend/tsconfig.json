@@ -7,7 +7,6 @@
       "ES2018",
       "ESNext.AsyncIterable"
     ],
-    "allowJs": true,
     "rootDir": "src",
     "outDir": "build",
     "noImplicitAny": true,
