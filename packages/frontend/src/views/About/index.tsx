@@ -49,16 +49,16 @@ export const About = () => {
         </p>
         <p className="about-paragraph body">
           Finally, due to the way certain committee websites are structured,
-          their data is not available on this website: First, the Senate Indian
-          Affairs Committee. For information from those hearings please head to
-          the <a href="https://www.indian.senate.gov">committee website</a>.
-          Second, the House Intelligence Committee, which does not appear to
-          post their committee hearing information regularly anywhere online
-          other than with the{" "}
+          their full data is not available on this website. First, the House
+          Intelligence Committee, which does not appear to post their committee
+          hearing information regularly anywhere online other than with the{" "}
           <a href="https://www.congress.gov/committee-schedule/weekly/2020/09/21">
             clerk
           </a>{" "}
-          and through irregular press releases.
+          and through irregular press releases. Second, the Senate Indian
+          Affairs Committee does not allow for batch downloading of their data,
+          so for historical information from those hearings please head to the{" "}
+          <a href="https://www.indian.senate.gov">committee website</a>.
         </p>
         <p className="about-paragraph body">
           This project is fully open source and will always be so. If you would
