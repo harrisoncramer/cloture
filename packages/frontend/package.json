@@ -53,9 +53,9 @@
   "scripts": {
     "dev:start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
     "dev:analyze": "source-map-explorer 'build/static/js/*.js'",
-    "dev:test": "SKIP_PREFLIGHT_CHECK=true react-scripts test --verbose --watchAll --env=jsdom-fourteen",
     "prod:build": "SKIP_PREFLIGHT_CHECK=true react-scripts build",
     "prod:deploy": "SKIP_PREFLIGHT_CHECK=true react-scripts build && scp -r ./build",
+    "test:run": "SKIP_PREFLIGHT_CHECK=true react-scripts test --verbose --watchAll --env=jsdom-fourteen",
     "test:coverage": "SKIP_PREFLIGHT_CHECK=true react-scripts test --coverage --watchAll=false --env=jsdom-fourteen",
     "test:view": "live-server coverage/lcov-report",
     "eject": "react-scripts eject"
