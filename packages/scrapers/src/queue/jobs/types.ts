@@ -1,78 +1,109 @@
 // Reusable types
-type labelSelector = { label: boolean; value: string };
-type dateAndTime = { date: labelSelector; time: labelSelector };
-type dateAndTimeRegex = { regexDate: boolean; regexTime: boolean };
-type dates = dateAndTime | dateAndTimeRegex;
+type LabelSelector = { label: boolean; value: string };
+type InstanceSelector = { selector: string; instance: number };
 
-// Base interface for scraper selectors
-export interface selectors {
+// Import committee union types
+import { houseCommittees, senateCommittees } from "../../statics";
+
+// Used to get links
+export type RowsAndDepth = {
+  rows: string;
+  depth: number;
+};
+
+// Details for scrapers
+export interface V1 {
+  version: "puppeteerv1";
   layerOne: {
     depth: number;
     rows: string;
   };
   layerTwo: {
     title: string;
-    date?: labelSelector;
-    time?: labelSelector;
+    titleTrimRegex?: string;
+    date: LabelSelector | boolean;
+    time?: LabelSelector | boolean;
+    splitDate?: string;
+    location?: LabelSelector;
   };
 }
 
-export type v1Selectors = selectors & {
-  layerTwo: dates & {
-    location?: labelSelector;
-  };
-};
-
-export type v6Selectors = selectors & {
+export interface V2 {
+  version: "puppeteerv2";
   layerOne: {
+    depth: number;
+    rows: string;
+    date: InstanceSelector;
+    time?: InstanceSelector;
+    splitDate?: string;
+    location?: string | undefined;
+  };
+}
+export interface V3 {
+  version: "puppeteerv3";
+  layerOne: {
+    depth: number;
+    rows: string;
+  };
+}
+
+export interface V4 {
+  version: "puppeteerv4";
+  layerOne: {
+    depth: number;
+    upcomingHearings: string;
+    hearings: string;
+    dateTime: string;
+    time: string;
+    location?: string;
+  };
+}
+
+export interface V5 {
+  version: "puppeteerv5";
+  layerOne: {
+    depth: number;
+    rows: string;
+  };
+  layerTwo: {
+    title: string;
+    jquerySelector: string;
+    locationIndex: number | null;
+    dateIndex: number;
+    timeIndex: number;
+  };
+}
+export interface V6 {
+  version: "puppeteerv6";
+  layerOne: {
+    depth: number;
+    rows: string;
     filter: { keyword: string; selector: string };
   };
   layerTwo: {
-    regexTime: boolean;
-    regexDate: boolean;
+    title: string;
+    date: LabelSelector | boolean;
+    time: LabelSelector | boolean;
+    location?: LabelSelector;
   };
-};
-
-export interface puppeteerv1 {
-  version: "puppeteerv1";
-  selectors: v1Selectors;
 }
-
-//interface puppeteerv2 {
-//version: "puppeteerv2";
-//selectors: v2Selectors;
-//}
-
-//interface puppeteerv3 {
-//version: "puppeteerv3";
-//selectors: v3Selectors;
-//}
-
-//interface puppeteerv4 {
-//version: "puppeteerv4";
-//selectors: v4Selectors;
-//}
-
-//interface puppeteerv5 {
-//version: "puppeteerv5";
-//selectors: v5Selectors;
-//}
-
-export interface puppeteerv6 {
-  version: "puppeteerv6";
-  selectors: v6Selectors;
-}
-
-export type sched = { kind: "cron"; value: string };
-
-export interface job {
-  collection: "senateCommittee" | "houseCommittee";
+interface Job {
   name: string;
   link: string;
-  details: puppeteerv1 | puppeteerv6;
-  //| puppeteerv2
-  //| puppeteerv3
-  //| puppeteerv4
-  //| puppeteerv5
 }
 
+export interface HouseJob<Details> extends Job {
+  collection: "houseCommittee";
+  committee: houseCommittees;
+  name: string;
+  link: string;
+  details: Details;
+}
+
+export interface SenateJob<Details> {
+  collection: "senateCommittee";
+  committee: senateCommittees;
+  name: string;
+  link: string;
+  details: Details;
+}

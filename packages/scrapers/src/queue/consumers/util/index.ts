@@ -10,6 +10,8 @@ import {
   puppeteerv6,
 } from "../scrapers";
 
+import { Committee } from "../../../types/shared";
+
 // This function only runs once and sets up our puppeteer browser.
 export const setupPuppeteer = async (initVals: {
   kind: string | null;

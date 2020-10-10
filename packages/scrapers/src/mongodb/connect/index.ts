@@ -19,7 +19,11 @@ export const connect = async (): Promise<void> => {
 
     // If in development, set username and password and mongoose debugger
     if (process.env.NODE_ENV === "development") {
-      mongoose.set("debug", true);
+      mongoose.set(
+        "debug",
+        process.env.NODE_ENV === "development" &&
+          process.env.MONGOOSE_LOGS === "true"
+      );
       options.user = process.env.MONGODB_USER;
       options.pass = process.env.MONGODB_PASS;
     }

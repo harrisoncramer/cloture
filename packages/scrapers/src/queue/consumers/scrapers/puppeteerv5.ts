@@ -1,15 +1,20 @@
 import puppeteer from "puppeteer";
+import randomUser from "random-useragent";
 
 // Import job types
-import { houseJob } from "../../jobs/house";
-import { senateJob } from "../../jobs/senate";
+import { HouseJob, SenateJob, V5 } from "../../jobs";
 
-import { getLinks, getPageDataWithJQuery } from "./common";
-import { openNewPages, setInitialPage } from "./configuration";
+import { getLinks, getPageDataWithJQuery, getPageText } from "./common";
+import {
+  setPageScripts,
+  openNewPages,
+  setPageBlockers,
+  setInitialPage,
+} from "./navigation";
 
 export const puppeteerv5 = async (
   browser: puppeteer.Browser,
-  job: houseJob | senateJob
+  job: HouseJob<V5> | SenateJob<V5>
 ) => {
   const page: puppeteer.Page = await setInitialPage(browser, job.link);
 
@@ -20,7 +25,7 @@ export const puppeteerv5 = async (
   try {
     links = await getLinks({
       page,
-      selectors: job.details.selectors.layerOne,
+      selectors: job.details.layerOne,
     });
   } catch (err) {
     console.error("Could not get links. ", err);
@@ -37,7 +42,7 @@ export const puppeteerv5 = async (
   try {
     pageData = await getPageDataWithJQuery({
       pages,
-      selectors: job.details.selectors.layerTwo,
+      selectors: job.details.layerTwo,
     });
   } catch (err) {
     console.error("Could not get pageData. ", err);
@@ -45,7 +50,7 @@ export const puppeteerv5 = async (
   }
 
   try {
-    const pages = await browser.pages();
+    let pages = await browser.pages();
     await Promise.all(
       pages.map(async (page, i) => i > 0 && (await page.close()))
     );

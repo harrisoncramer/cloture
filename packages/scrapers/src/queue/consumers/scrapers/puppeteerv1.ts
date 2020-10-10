@@ -1,28 +1,31 @@
 import puppeteer from "puppeteer";
 
-// Import job types
-import { houseJob } from "../../jobs/house";
-import { senateJob } from "../../jobs/senate";
-
 // Import common functions for all scrapers and for page-specific logic
 import { getPageData, getLinks } from "./common";
-import { setInitialPage, openNewPages } from "./configuration";
+import {
+  setPageBlockers,
+  setPageScripts,
+  setInitialPage,
+  openNewPages,
+} from "./navigation";
+
+import { HouseJob, SenateJob, V1 } from "../../jobs/types";
 
 export const puppeteerv1 = async (
   browser: puppeteer.Browser,
-  job: houseJob | senateJob
+  job: HouseJob<V1> | SenateJob<V1>
 ) => {
   // Setup puppeteer page for the job
   const page: puppeteer.Page = await setInitialPage(browser, job.link);
 
-  let links;
-  let pages;
+  let links: (string | null)[];
+  let pages: puppeteer.Page[] | null;
   let pageData;
 
   try {
     links = await getLinks({
       page,
-      selectors: job.details.selectors.layerOne,
+      selectors: job.details.layerOne,
     });
   } catch (err) {
     console.error("Could not get links. ", err);
@@ -39,7 +42,7 @@ export const puppeteerv1 = async (
   try {
     pageData = await getPageData({
       pages,
-      selectors: job.details.selectors.layerTwo,
+      selectors: job.details.layerTwo,
     });
   } catch (err) {
     console.error("Could not get pageData. ", err);
@@ -47,7 +50,7 @@ export const puppeteerv1 = async (
   }
 
   try {
-    const pages = await browser.pages();
+    let pages = await browser.pages();
     await Promise.all(
       pages.map(async (page, i) => i > 0 && (await page.close()))
     );

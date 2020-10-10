@@ -8,6 +8,7 @@ declare namespace NodeJS {
     MONGODB_URI: string;
     MONGODB_USER: string;
     MONGODB_PASS: string;
+    MONGOOSE_LOGS: "true" | "false";
     SCRAPE: "true" | "false";
     HEADLESS: "true" | "false";
   }

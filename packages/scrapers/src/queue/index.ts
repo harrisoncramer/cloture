@@ -43,7 +43,7 @@ export const setupQueue = async () => {
   process.env.NODE_ENV === "development" && (await askQuestion("Run scraper?"));
 
   try {
-    consumers(queue);
+    await consumers(queue);
   } catch (err) {
     console.log("Could not run consumers");
   }
