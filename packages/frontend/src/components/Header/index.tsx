@@ -5,6 +5,7 @@ import Menu from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 
 import Links from "./links";
+import { Helmet } from "react-helmet";
 
 import "./style.scss";
 
@@ -17,6 +18,29 @@ const Header = (): React.ReactElement => {
 
   return (
     <header className="header">
+      <Helmet>
+        <title>Cloture</title>
+        <meta
+          name="description"
+          content="The webscraper for busy people on Capitol Hill."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="twitter:card" content="ClotureApp" />
+        <meta name="twitter:site" content="@ClotureApp" />
+        <meta
+          name="twitter:title"
+          content="The webscraper for busy people on Capitol Hill."
+        />
+        <meta
+          name="twitter:description"
+          content="The webscraper for busy people on Capitol Hill."
+        />
+        <meta name="twitter:creator" content="@harrisoncramer" />
+        <meta name="geo.region" content="US" />
+        <meta name="geo.placename" content="Washington D.C." />
+        <meta name="geo.position" content="38.889803;-77.009418" />
+        <meta name="ICBM" content="38.889803, -77.009418" />
+      </Helmet>
       <nav>
         <IconButton
           data-testid="menuButton"
