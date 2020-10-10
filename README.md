@@ -36,8 +36,11 @@ Depending on which packages you are trying to run, you will need to install the 
 
 `yarn install` 
 
+To run the frontend and backend simultaneously from the root folder simply run:
 
-## Backend
+## Startup
+`yarn dev:start` 
 
-> **ProTip:** You can disable any **Markdown extension** in the **File properties** dialog.
+This command will run the `dev:start` command inside both the **frontend** and **backend** packages. You may also run the server and the React frontend separately by running `dev:start` inside each of the packages.
 
+Further information about the various packages can be found inside the `README.md` files for each one.
