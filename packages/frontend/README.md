@@ -1,44 +1,46 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🏛️ Cloture Frontend
 
-## Available Scripts
+This is the frontend for the Cloture application.
 
-In the project directory, you can run:
+## Installation
 
-### `yarn start`
+`npm install` 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+*or*
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+`yarn install` 
 
-### `yarn test`
+## Environment and Development
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Create an environment file and store it in the root of this folder. The variables must be prefixed with `REACT_APP_` so that the `create-react-app` template can pick them up.
 
-### `yarn build`
+The required development variables are stored in the file named `.development.env` and are as follows:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> REACT_APP_GOOGLE_ANALYTICS=[string]
+> REACT_APP_API=http://localhost:3005/graphql
+> REACT_APP_MIN_DATE=1980-06-19T04:00:00.000+00:00
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Once the environment variables are created, run:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`yarn dev:start` 
 
-### `yarn eject`
+## Testing
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To run the tests run `yarn test:run` which will run the jest tests.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Each test file is stored with the component that it is testing and will always be named `_test.tsx` 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To generate a coverage report run `yarn test:coverage` and to view that report in the browser run `yarn test:view` 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Deploy
 
-## Learn More
+During our deploy process, we build the project locally (due to the small nature of our deploy servers, which are unable to run the `react-scripts` build process without crashing:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`yarn prod:build` 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This script will build the entire application into the build folder. We then upload the completed `build` folder to our server using a simple `scp` command. This requires the user to provide one argument: the location of the remote folder to deploy the application. For example:
+
+`yarn prod:deploy admin@157.112.237.69:/path/to/frontend/build`
+
+
+
