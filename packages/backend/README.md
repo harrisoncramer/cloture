@@ -27,6 +27,12 @@ Create two environment files and store them in the root of this folder. The requ
 
 Once the variables are configured, run `yarn dev:start` 
 
+## Sample Data
+
+The should be populated in two MongoDB collections titled `houseCommittees` and `senateCommittees` which you can download [here](https://storage.googleapis.com/cloture/dump/sample_database/dump.tar.gz).
+
+You can then [mongoimport](https://docs.mongodb.com/manual/reference/program/mongoimport/) the collections into your local/cloud DB.
+
 ## Structure
 
 The project uses Type-GraphQL and Apollo.
