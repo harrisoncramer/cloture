@@ -10,21 +10,10 @@ Please see the `CONTRIBUTING.md` to see how you can contribute.
 
 This is the **monorepo**  that stores the various parts of Cloture, which are contained in the **packages** folder. You can download the entire project here, or just one of the packages separately.
 
-Besides a traditional frontend and backend, this application runs web scrapers at regular intervals that pull data from the targeted sites. The queue management 
+Besides a traditional frontend and backend, this application runs web scrapers at regular intervals that pull data from the targeted sites. The project is structured as follows:
 
-```mermaid
-graph LR
-A[User] -- Request --> B((Nginx))
-B --> C(Frontend)
-C -- Data --> A
-C -- GQL Query --> D(Backend)
-D(Backend) -- Mongoose --> E{MongoDB}
+![Data Flow for Cloture App](https://storage.googleapis.com/cloture/ClotureFlow.png) 
 
-F(Scrapers) --> G(External Data # 1)
-F(Scrapers) --> H(External Data # 2)
-F(Scrapers) --> I(External Data # 3)
-F -- Upload data */30 minutes --> E
-```
 ## Tech Stack
 
 **Stack**: MongoDB, Apollo (with Express), React, Node.JS
