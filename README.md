@@ -17,8 +17,11 @@ Besides a traditional frontend and backend, this application runs web scrapers a
 ## Tech Stack
 
 **Stack**: MongoDB, Apollo (with Express), React, Node.JS
+
 **Backend**: TypeGraphQL for Schema design with Typegoose (Mongoose and MongoDB) and Apollo
+
 **Frontend**:  React written with Typescript, using the Create-React-App framework and Apollo's GQL frontend framework for data-fetching. The application is served through Nginx, which is a reverse-proxy and load balancer (code not included).
+
 **Scrapers**: Primarily using `Puppeteer` for scraping, Cheerio for some of the parsing, and Bull.JS (which uses Redis) for queue management. 
 
 In production, all of these applications are all running with [pm2](https://pm2.io/) which keeps them running in the event of a crash and manages our logs.
