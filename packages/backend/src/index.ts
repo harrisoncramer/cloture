@@ -2,7 +2,7 @@
 import { resolve } from "path";
 import dotenv from "dotenv";
 const envi = process.env.NODE_ENV;
-dotenv.config({ path: resolve(__dirname, `../.${envi}.env`) });
+dotenv.config({ path: resolve(__dirname, `../.env.${envi}`) });
 
 import "reflect-metadata";
 import { connect } from "./mongodb/connect";
@@ -53,9 +53,9 @@ import express from "express";
     });
   }
 
-  app.listen({ port: 3005 }, () => {
+  app.listen({ port: process.env.PORT }, () => {
     console.log(
-      `🚀 Server listening on port ${3005}, API at ${server.graphqlPath}`
+      `🚀 Server listening on port ${process.env.PORT}, API at ${server.graphqlPath}`
     );
   });
 })();

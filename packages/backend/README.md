@@ -4,28 +4,29 @@ This is the backend for the Cloture application.
 
 This [Apollo](https://www.apollographql.com/) server performs two functions:
 
-1) Accepts traffic from NGINX and routes to the correct port
-2) Fetches data from the `MongoDB` database upon receiving GQL requests from the frontend.
+1. Accepts traffic from NGINX and routes to the correct port
+2. Fetches data from the `MongoDB` database upon receiving GQL requests from the frontend.
 
 ## Installation
 
-`npm install` 
+`npm install`
 
-*or*
+_or_
 
-`yarn install` 
+`yarn install`
 
 ## Environment and Development
 
-Create two environment files and store them in the root of this folder. The required development file `.development.env` 
+Create two environment files and store them in the root of this folder. The required development file `.env.development`
 
-> PORT={number] 
-> MONGODB_URI=[string] 
-> MONGODB_USER=[string]
-> MONGODB_PASS=[string]
-> REACT_APP_API=[string]
+```
+PORT={number]
+MONGODB_URI=[string]
+MONGODB_USER=[string]
+MONGODB_PASS=[string]
+```
 
-Once the variables are configured, run `yarn dev:start` 
+Once the variables are configured, run `yarn dev:start`
 
 ## Structure
 
