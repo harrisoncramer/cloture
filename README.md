@@ -2,9 +2,7 @@
 
 This application is built to help journalists and other researchers keep track of information about Congress. It currently aggregates congressional hearing data from across the various committees on Capitol Hill.
 
-It will soon include financial disclosure forms, ad buys, press releases, and other information about Congress.
-
-Please see the `CONTRIBUTING.md` to see how you can contribute.
+It will soon include financial disclosure forms, ad buys, press releases, and other information about Congress. Make a pull request!
 
 ## Structure
 
