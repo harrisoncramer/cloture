@@ -20,19 +20,19 @@ _or_
 Create two environment files and store them in the root of this folder. The required development file `.env.development`
 
 ```
-PORT={number]
+PORT=[number] # Must match the port provided through the REACT_APP_API in frontend
 MONGODB_URI=[string]
-MONGODB_USER=[string]
-MONGODB_PASS=[string]
+MONGODB_USER=?[string]
+MONGODB_PASS=?[string]
 ```
 
 Once the variables are configured, run `yarn dev:start`
 
 ## Sample Data
 
-The should be populated in two MongoDB collections titled `houseCommittees` and `senateCommittees` which you can download [here](https://storage.googleapis.com/cloture/dump/sample_database/dump.tar.gz).
+The should be populated in two MongoDB collections titled `houseCommittees` and `senateCommittees` which you can download [here](https://storage.googleapis.com/cloture/dump.tar.gz).
 
-You can then [mongoimport](https://docs.mongodb.com/manual/reference/program/mongoimport/) the collections into your local/cloud DB.
+You can then run [mongorestore](https://docs.mongodb.com/manual/reference/program/mongoimport/) on the `dump` folder to import it into your local/cloud DB.
 
 ## Structure
 

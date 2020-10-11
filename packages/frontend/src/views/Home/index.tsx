@@ -32,9 +32,6 @@ export const Home = () => {
     setFilter(text);
   };
 
-  console.log(minDate);
-  console.log(maxDate);
-
   return (
     <ViewWrapper>
       <div className="homeFilters">
