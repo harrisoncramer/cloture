@@ -1,6 +1,6 @@
-# 🏛️ Welcome to Cloture! 
+# 🏛️ Welcome to Cloture!
 
-This application is built to help journalists and other researchers keep track of information about Congress. It currently aggregates congressional hearing data from across the various committees on Capitol Hill. 
+This application is built to help journalists and other researchers keep track of information about Congress. It currently aggregates congressional hearing data from across the various committees on Capitol Hill.
 
 It will soon include financial disclosure forms, ad buys, press releases, and other information about Congress.
 
@@ -8,11 +8,11 @@ Please see the `CONTRIBUTING.md` to see how you can contribute.
 
 ## Structure
 
-This is the **monorepo**  that stores the various parts of Cloture, which are contained in the **packages** folder. You can download the entire project here, or just one of the packages separately.
+This is the **monorepo** that stores the various parts of Cloture, which are contained in the **packages** folder. You can download the entire project here, or just one of the packages separately.
 
 Besides a traditional frontend and backend, this application runs web scrapers at regular intervals that pull data from the targeted sites. The project is structured as follows:
 
-![Data Flow for Cloture App](https://storage.googleapis.com/cloture/ClotureFlow.png) 
+![Data Flow for Cloture App](https://storage.googleapis.com/cloture/ClotureFlow.png)
 
 ## Tech Stack
 
@@ -20,9 +20,9 @@ Besides a traditional frontend and backend, this application runs web scrapers a
 
 **Backend**: TypeGraphQL for Schema design with Typegoose (Mongoose and MongoDB) and Apollo
 
-**Frontend**:  React written with Typescript, using the Create-React-App framework and Apollo's GQL frontend framework for data-fetching. The application is served through Nginx, which is a reverse-proxy and load balancer (code not included).
+**Frontend**: React written with Typescript, using the Create-React-App framework and Apollo's GQL frontend framework for data-fetching. The application is served through Nginx, which is a reverse-proxy and load balancer (code not included).
 
-**Scrapers**: Primarily using `Puppeteer` for scraping, Cheerio for some of the parsing, and Bull.JS (which uses Redis) for queue management. 
+**Scrapers**: Primarily using `Puppeteer` for scraping, Cheerio for some of the parsing, and Bull.JS (which uses Redis) for queue management.
 
 In production, all of these applications are all running with [pm2](https://pm2.io/) which keeps them running in the event of a crash and manages our logs.
 
@@ -30,17 +30,20 @@ In production, all of these applications are all running with [pm2](https://pm2.
 
 Depending on which packages you are trying to run, you will need to install the `.env` files to correctly configure the environment variables for the Node.js runtime.
 
-`npm install` 
+`npm install`
 
-*or*
+_or_
 
-`yarn install` 
+`yarn install`
 
 To run the frontend and backend simultaneously from the root folder simply run:
 
 ## Startup
-`yarn dev:start` 
+
+`yarn dev:start`
 
 This command will run the `dev:start` command inside both the **frontend** and **backend** packages. You may also run the server and the React frontend separately by running `dev:start` inside each of the packages.
+
+This command does not automatically start the scrapers, because it's presumed that you would work on those separately. They can be run from within the scrapers folder.
 
 Further information about the various packages can be found inside the `README.md` files for each one.

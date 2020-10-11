@@ -3,7 +3,7 @@ import path from "path";
 import fs from "fs";
 
 const envPath = path.resolve(__dirname, "..", `.${process.env.NODE_ENV}.env`);
-let fileExists = fs.existsSync(envPath);
+const fileExists = fs.existsSync(envPath);
 
 if (!fileExists) {
   console.log("Environment variables not found.");
@@ -16,7 +16,7 @@ import { connect } from "./mongodb/connect";
 import { configureRedis } from "./redis";
 import { setupQueue } from "./queue";
 
-const runServer = async () => {
+const runServer = async (): Promise<void> => {
   try {
     await connect();
     console.log(`Connected to MongoDB at ${process.env.MONGODB_URI}.`);

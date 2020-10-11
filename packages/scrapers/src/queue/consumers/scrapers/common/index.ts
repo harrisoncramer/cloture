@@ -15,7 +15,7 @@ import puppeteer from "puppeteer";
 import { V1, V2, V3, V4, V5, V6, RowsAndDepth } from "../../../jobs/types";
 
 type StringOrNull = string | null;
-interface Result {
+export interface Result {
   title: StringOrNull;
   link: StringOrNull;
   date: StringOrNull;

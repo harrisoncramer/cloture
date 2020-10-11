@@ -13,9 +13,7 @@ import {
 import { Committee } from "../../../types/shared";
 
 // This function only runs once and sets up our puppeteer browser.
-export const setupPuppeteer = async (initVals: {
-  kind: string | null;
-}): Promise<puppeteer.Browser> => {
+export const setupPuppeteer = async (): Promise<puppeteer.Browser> => {
   const args = ["--no-sandbox", "--unlimited-storage"];
 
   const browser = await puppeteer.launch({
@@ -40,7 +38,7 @@ export const setupPuppeteer = async (initVals: {
 export const pickScraper = (kind: string) =>
   ((kind) => {
     switch (kind) {
-      case "puppeteerv1" || "puppeteerv1.1":
+      case "puppeteerv1":
         return puppeteerv1;
       case "puppeteerv2":
         return puppeteerv2;

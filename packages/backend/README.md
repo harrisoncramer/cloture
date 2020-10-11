@@ -20,7 +20,9 @@ _or_
 Create two environment files and store them in the root of this folder. The required development file `.env.development`
 
 ```
-PORT=[number] # Must match the port provided through the REACT_APP_API in frontend
+# Must match the port provided through the REACT_APP_API in frontend
+PORT=[number]
+# Presumably something like mongodb://localhost:27017/cloture
 MONGODB_URI=[string]
 MONGODB_USER=?[string]
 MONGODB_PASS=?[string]
