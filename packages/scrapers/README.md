@@ -1,8 +1,6 @@
-# ts_cloture.app.scrapers
+# 🏛️ ClotureScrapers
 
-### These are the scrapers that feed congressional hearing information to Cloture with Puppeteer.
-
-This project uses Bull.js it doesto create a queue of scrapers to various congressional committee websites.
+These are the scrapers that feed data into Cloture's database.
 
 ## Installation
 
