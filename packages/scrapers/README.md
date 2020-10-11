@@ -1,4 +1,4 @@
-# 🏛️ ClotureScrapers
+# 🏛️ Cloture Scrapers
 
 These are the scrapers that feed data into Cloture's database.
 
