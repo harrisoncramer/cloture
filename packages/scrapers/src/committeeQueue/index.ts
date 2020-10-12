@@ -8,10 +8,10 @@ import { askQuestion } from "../util";
 // Import different jobs
 import { house, senate } from "./jobs";
 
-export const setupQueue = async (): Promise<void> => {
+export const setupCommitteeQueue = async (): Promise<void> => {
   // Create an instance of the Bull queue: https://github.com/OptimalBits/bull
   try {
-    var queue = new Bull("myQueue", {
+    var queue = new Bull("committeeQueue", {
       redis: {
         port: parseInt(process.env.REDIS_PORT ?? "1000"),
         host: process.env.REDIS_URL,
