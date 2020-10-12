@@ -8,6 +8,8 @@ It will soon include financial disclosure forms, ad buys, press releases, and ot
 
 This is the **monorepo** that stores the various parts of Cloture, which are contained in the **packages** folder. You can download the entire project here, or just one of the packages separately.
 
+**PLEASE NOTE, YOU WILL NEED TO INSTALL ENVIRONMENT VARIABLES IN THE SUBFOLDERS FOR THE APPLICATION TO RUN CORRECTLY**
+
 Besides a traditional frontend and backend, this application runs web scrapers at regular intervals that pull data from the targeted sites. The project is structured as follows:
 
 ![Data Flow for Cloture App](https://storage.googleapis.com/cloture/ClotureFlow.png)
@@ -34,7 +36,6 @@ _or_
 
 `yarn install`
 
-To run the frontend and backend simultaneously from the root folder simply run:
 
 ## Startup
 
