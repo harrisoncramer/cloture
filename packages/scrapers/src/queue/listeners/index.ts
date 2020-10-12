@@ -1,5 +1,5 @@
 import Bull from "bull";
-import { Queue, JobOptions } from "bull";
+import { Queue } from "bull";
 import { HouseCommitteeModel, SenateCommitteeModel } from "../../types";
 import { GoodResult, E } from "../consumers";
 
@@ -19,11 +19,11 @@ export const listeners = async (queue: Queue) => {
 
       const { meta, data } = value;
 
-      let model =
+      const model =
         meta.collection === "houseCommittee"
           ? HouseCommitteeModel
           : SenateCommitteeModel;
-      let committee = meta.committee;
+      const committee = meta.committee;
 
       if (!model) {
         return console.error(
@@ -31,27 +31,18 @@ export const listeners = async (queue: Queue) => {
         );
       }
 
-      try {
-        let promisedInsertsAndUpdates = data
-          .map((x) => ({ ...x, committee }))
-          .map(async (datum) => {
-            let doc = await model.findOne({ link: datum.link });
-            if (!doc) {
-              let newDoc = new model({ ...datum });
-              return await newDoc.save();
-            } else {
-              doc.set({ ...datum });
-              return await doc.save();
-            }
-          });
-
-        // Once all promises have resolved (if data was new or not) then finish.
-        // EDIT -- Change this to Promise.allSettled and log the errored values, such as when data does not match the schema
-        // Also, must reattach the pre/post save hooks to the schemas! See the cloture.app.backend repository
-        await Promise.all(promisedInsertsAndUpdates);
-      } catch (err) {
-        console.error(`${job.name} could not insert data.`);
-      }
+      data
+        .map((x) => ({ ...x, committee }))
+        .map(async (datum) => {
+          const doc = await model.findOne({ link: datum.link });
+          if (!doc) {
+            const newDoc = new model({ ...datum });
+            await newDoc.save();
+          } else {
+            doc.set({ ...datum });
+            await doc.save();
+          }
+        });
     }
   );
 

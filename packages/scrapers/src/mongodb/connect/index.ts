@@ -19,13 +19,13 @@ export const connect = async (): Promise<void> => {
 
     // If in development, set username and password and mongoose debugger
     if (process.env.NODE_ENV === "development") {
-      mongoose.set("debug", process.env.MONGOOSE_LOGS === "false" || true);
+      process.env.MONGOOSE_LOGS === "true" && mongoose.set("debug", true);
       options.user = process.env.MONGODB_USER || undefined;
       options.pass = process.env.MONGODB_PASS || undefined;
     }
 
     // If in production, just connect to Atlas
-    await mongoose.connect(process.env.MONGODB_URI as string, options);
+    await mongoose.connect(process.env.MONGODB_URI, options);
   } catch (err) {
     console.log("Could not connect to DB.");
     console.log(err);

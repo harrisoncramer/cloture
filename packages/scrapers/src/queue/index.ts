@@ -13,7 +13,7 @@ export const setupQueue = async (): Promise<void> => {
   try {
     var queue = new Bull("myQueue", {
       redis: {
-        port: parseInt(process.env.REDIS_PORT as string),
+        port: parseInt(process.env.REDIS_PORT ?? "1000"),
         host: process.env.REDIS_URL,
         password: process.env.REDIS_PASSWORD,
       },

@@ -11,6 +11,7 @@
     "prod:start": "pm2 start ecosystem.config.json --env production"
   },
   "dependencies": {
+    "types": "1.0.0",
     "@typegoose/typegoose": "^7.4.1",
     "@types/jquery": "^3.5.1",
     "@types/node": "^14.11.2",

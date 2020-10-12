@@ -1,10 +1,8 @@
-import puppeteer from "puppeteer";
 import Bull from "bull";
 import { setupPuppeteer, pickScraper } from "./util";
-import { Queue, JobOptions } from "bull";
+import { Queue } from "bull";
 // EDIT -- This is not the correct type becuase of casting the time/date to strings.
 import { Committee } from "../../types/shared";
-import { houseCommittees, senateCommittees } from "../../statics";
 
 export interface GoodResult {
   data: Committee[];
@@ -32,7 +30,6 @@ export const consumers = async (queue: Queue): Promise<void> => {
 
         // Run the scraper, getting an array of committees
         const data: Committee[] = await scraper(browser, job.data);
-        console.log(`${job.name} finished`);
 
         // Return the data from the scraper and the metadata from the job to the listener.  The collection will be used to choose whether to use the senate or house resolver.  The committee will be saved with the document
         return {
@@ -44,7 +41,7 @@ export const consumers = async (queue: Queue): Promise<void> => {
         };
       } catch (err) {
         // If there are any errors, close all the pages from the job and return the error
-        let oldPages = await browser.pages();
+        const oldPages = await browser.pages();
         await Promise.all(
           oldPages.map(async (page, i) => i > 0 && (await page.close()))
         );
