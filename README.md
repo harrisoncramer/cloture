@@ -4,6 +4,8 @@ This application is built to help journalists and other researchers keep track o
 
 It will soon include financial disclosure forms, ad buys, press releases, and other information about Congress. Make a pull request!
 
+If you would like to give it a test before you stand it up yourself, there is a live version at [cloture.app](http://www.cloture.app/).
+
 ## Structure
 
 This is the **monorepo** that stores the various parts of Cloture, which are contained in the **packages** folder. You can download the entire project here, or just one of the packages separately.
