@@ -2,13 +2,13 @@
 
 This application is built to help journalists and other researchers keep track of information about Congress. It currently aggregates congressional hearing data from across the various committees on Capitol Hill.
 
-It will soon include financial disclosure forms, ad buys, press releases, and other information about Congress.
-
-Please see the `CONTRIBUTING.md` to see how you can contribute.
+It will soon include financial disclosure forms, ad buys, press releases, and other information about Congress. Make a pull request!
 
 ## Structure
 
 This is the **monorepo** that stores the various parts of Cloture, which are contained in the **packages** folder. You can download the entire project here, or just one of the packages separately.
+
+**PLEASE NOTE, YOU WILL NEED TO INSTALL ENVIRONMENT VARIABLES IN THE SUBFOLDERS FOR THE APPLICATION TO RUN CORRECTLY**
 
 Besides a traditional frontend and backend, this application runs web scrapers at regular intervals that pull data from the targeted sites. The project is structured as follows:
 
@@ -36,7 +36,6 @@ _or_
 
 `yarn install`
 
-To run the frontend and backend simultaneously from the root folder simply run:
 
 ## Startup
 
