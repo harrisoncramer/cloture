@@ -1,16 +1,83 @@
 import puppeteer from "puppeteer";
 
-// EDIT -- How do we switch this to use our build/src folder instead? It should be build when running and src when dev
-//import {
-//makeArrayFromDocument,
-//getFromText,
-//getLink,
-//getLinkText,
-//getNextTextFromDocument,
-//getTextFromDocument,
-//getNthInstanceOfText,
-//clean,
-//} from "../functions/src";
+// These are the helper functions. They are transpiled into javascript (into the build folder) which is then attached to the puppeteer window.
+// They are not set in a separate file due to this puppeteer issue.
+// The main scraper functions are listed below
+const clean = (item: string | undefined | null) =>
+  item ? item.replace(/\s\s+/g, " ").trim() : null;
+
+const getLink = (node: Element) => {
+  let link = node.querySelector("a");
+  return link ? link.href : null;
+};
+
+const getLinkText = (node: Element) => {
+  const link = node.querySelector("a");
+  return link ? clean(link.textContent) : null;
+};
+
+const getNodeFromDocument = (query: string) => document.querySelector(query);
+
+const getNextNodeFromDocument = (query: string) => {
+  const node = document.querySelector(query);
+  return node ? node.nextSibling : null;
+};
+
+const getTextFromDocument = (query: string) => {
+  const node = document.querySelector(query);
+  return node ? clean(node.textContent) : null;
+};
+
+const getNextTextFromDocument = (query: string) => {
+  const node = document.querySelector(query);
+  const nextSibling = node?.nextSibling?.textContent?.trim();
+  return clean(nextSibling);
+};
+
+const getNextElementSiblingTextFromDocument = (query: string) =>
+  clean(document.querySelector(query)?.nextElementSibling?.textContent?.trim());
+
+const makeArrayFromDocument = (query: string) =>
+  Array.from(document.querySelectorAll(query));
+
+const makeCleanArrayFromDocument = (query: string) =>
+  Array.from(document.querySelectorAll(query)).map((x) =>
+    clean(x.textContent ? x.textContent.trim() : null)
+  );
+
+const getFromNode = (node: Element, query: string) => node.querySelector(query);
+
+const getFromText = (node: Element, query: string) =>
+  clean(node.querySelector(query)?.textContent?.trim());
+
+const getFromLink = (node: Element) => node.querySelector("a")?.href;
+
+const getNextMatch = (node: Element, query: string) =>
+  node.querySelector(query)?.nextSibling?.nodeValue;
+
+const getNextElementSiblingText = (query: string) =>
+  clean(document.querySelector(query)?.nextElementSibling?.textContent?.trim());
+
+const getNodesFromArray = (arr: Element[], query: string) =>
+  arr.map((x) => Array.from(x.querySelectorAll(query)));
+
+const makeTextArray = (node: Element, query: string) =>
+  Array.from(node.querySelectorAll(query)).map((x) =>
+    clean(x.textContent ? x.textContent.trim() : null)
+  );
+
+//
+//// The main body of the scrapers
+//
+
+const getNthInstanceOfText = (node: Element, query: string, num: number) =>
+  node.querySelectorAll(query)[num]?.textContent;
+
+export const getNthInstanceOf = (
+  node: Element,
+  query: string,
+  num: number
+): Element | undefined => node.querySelectorAll(query)[num];
 
 import { V1, V2, V3, V4, V5, V6, RowsAndDepth } from "../../../jobs/types";
 

@@ -20,5 +20,7 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   rules: {
     "no-var": 0,
+    "prefer-const": 0,
+    "ban-ts-ignore": null,
   },
 };

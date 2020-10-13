@@ -15,6 +15,7 @@ dotenv.config({ path: envPath });
 import { connect } from "./mongodb/connect";
 import { configureRedis } from "./redis";
 import { setupCommitteeQueue } from "./committeeQueue";
+import { setupFiDiQueue } from "./fiDiQueue";
 
 const runServer = async (): Promise<void> => {
   try {
@@ -36,7 +37,9 @@ const runServer = async (): Promise<void> => {
   }
 
   try {
+    // Setup queues for various jobs
     await setupCommitteeQueue();
+    //await setupFiDiQueue();
     console.log(`Queue successfully established.`);
   } catch (err) {
     console.error(`Could not setup queue.`);

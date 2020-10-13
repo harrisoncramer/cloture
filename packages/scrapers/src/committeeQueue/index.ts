@@ -19,7 +19,7 @@ export const setupCommitteeQueue = async (): Promise<void> => {
       },
     });
   } catch (err) {
-    console.error("Could not create queue.");
+    console.error("Could not create Committee queue.");
     throw err;
   }
 
@@ -38,9 +38,6 @@ export const setupCommitteeQueue = async (): Promise<void> => {
     console.error("Could not setup listeners");
     throw err;
   }
-
-  // If in development, prompt for running scrapers. Otherwise, run them automatically.
-  process.env.NODE_ENV === "development" && (await askQuestion("Run scraper?"));
 
   try {
     await consumers(queue);

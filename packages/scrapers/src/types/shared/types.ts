@@ -118,3 +118,32 @@ export class Committee {
 export type CommitteeDocument = Committee & {
   committee: string;
 };
+
+// The post-save logger. Logs out id of new documents.
+@post<FinancialDisclosure>("save", function (
+  doc: mongoose.Document & any,
+  next
+) {
+  if (doc.wasNew) {
+    console.log(`Document saved with id ${doc._id}`);
+  }
+})
+@post<FinancialDisclosure>("save", function (
+  err: mongoose.Error,
+  doc: mongoose.Document,
+  next: any
+) {
+  console.log("Document could not save: ", err.message);
+  next();
+})
+export class FinancialDisclosure {
+  @Field({ nullable: true })
+  @prop()
+  link: string;
+}
+
+// The error class
+export interface E {
+  error: string;
+  errorMsg: string;
+}

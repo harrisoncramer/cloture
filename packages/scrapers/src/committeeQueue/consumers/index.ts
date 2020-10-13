@@ -1,5 +1,6 @@
 import Bull from "bull";
-import { setupPuppeteer, pickScraper } from "./util";
+import { pickScraper } from "./util";
+import setupPuppeteer from "../../setupPuppeteer";
 import { Queue } from "bull";
 // EDIT -- This is not the correct type becuase of casting the time/date to strings.
 import { Committee } from "../../types/shared";
