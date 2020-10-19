@@ -26,12 +26,14 @@ const Header = (): React.ReactElement => {
         />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content="Cloture" />
+        <meta name="title" property="og:title" content="Cloture" />
         <meta
+          name="image"
           property="og:image"
           content="https://storage.googleapis.com/cloture/Cloture_Social.png"
         />
         <meta
+          name="description"
           property="og:description"
           content="The webscraper for busy people on Capitol Hill."
         />
