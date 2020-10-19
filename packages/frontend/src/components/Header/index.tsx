@@ -24,7 +24,17 @@ const Header = (): React.ReactElement => {
           name="description"
           content="The webscraper for busy people on Capitol Hill."
         />
+
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="Cloture" />
+        <meta
+          property="og:image"
+          content="https://storage.googleapis.com/cloture/Cloture_Social.png"
+        />
+        <meta
+          property="og:description"
+          content="The webscraper for busy people on Capitol Hill."
+        />
         <meta name="twitter:card" content="ClotureApp" />
         <meta name="twitter:site" content="@ClotureApp" />
         <meta
