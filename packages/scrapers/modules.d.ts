@@ -4,7 +4,6 @@ declare namespace NodeJS {
     REDIS_URL: string;
     REDIS_PORT: string;
     REDIS_PASSWORD: string;
-    PORT: string;
     MONGODB_URI: string;
     MONGODB_USER: string;
     MONGODB_PASS: string;

@@ -1,11 +1,11 @@
 {
   "apps": [
     {
-      "name": "schedulers",
+      "name": "parsers",
       "script": "./build/index.js",
-      "out_file": "./logs/schedulers.log",
-      "error_file": "./logs/schedulers.err",
-      "log_file": "./logs/schedulers.combined",
+      "out_file": "./logs/parsers.log",
+      "error_file": "./logs/parsers.err",
+      "log_file": "./logs/parsers.combined",
       "merge_logs": true,
       "time": true,
       "timestamp": "YYYY-MM-DD HH:mm",

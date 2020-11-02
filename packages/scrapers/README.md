@@ -1,10 +1,14 @@
 # 🏛️ Cloture Scrapers
 
-These are the scrapers that feed data into Cloture's database.
+These are the scrapers that feed data into Cloture's database. This project will be merged into the monorepo to replace the existing scrapers, which use BullJS instead of Bee-JS.
+
+This setup is preferable because it does not rely on three different Redis interactions (schedulers and processers and listeners) but only two. The processors save the data directly.
 
 ## Installation
 
-`yarn install`
+Installation requires both installing the Node files used and also the Python packages used (for RSS parsing and other modules). The python packages are managed by `pipenv` and the yarn install script will run that automatically.
+
+`yarn install` 
 
 ## Configuration
 
@@ -12,8 +16,8 @@ Create an environment file and store it in the root of this folder. The `.develo
 
 ```
 REDIS_URL=[url]
-REDIS_PORT=[url]
-PORT=[number]
+REDIS_PORT=[number]
+PORT=[number] 
 MONGODB_URI=[string]
 MONGODB_USER=?[string]
 MONGODB_PASS=?[string]
@@ -23,22 +27,10 @@ MONGOOSE_LOGS?=[boolean]
 HEADLESS?=[boolean]
 ```
 
-Once the variables are configured, run `yarn dev:start`\*\*
-
-\*\*Due to an issue with Puppeteer and Typescript, we're having some trouble loading helper functions onto the page. See the Stackoverflow question [here](https://stackoverflow.com/questions/64199245/how-can-you-attach-typescript-javascript-functions-to-puppeteer-page-context/64234192#64234192).
-
-As a temporary workaround, compile and run the `src` folder with the two commands:
-
-`tsc`
-
-_and then_
-
-`NODE_ENV=development node build/index.js`
+Once the variables are configured, run `yarn dev:start`
 
 ## Structure
 
-Our server first connects to MongoDB, then Redis (and if in development, flushes the Redis cache of old jobs). Then, the application runs the main command, `setupQueue()`
+Our server first connects to MongoDB, then Redis (and flushes the Redis cache of old jobs). Then, the application instantiates our Queue Objects.
 
-We're using [Bull.js](https://github.com/OptimalBits/bull) to create and manage our queue, which is why we're connecting to Redis.
-
-When the scrapers are processed, each is passed to the browser we have open (Chromium) which then runs a puppeteer scraping routine. The results of the job are passed back to the listener queue, which then takes the data and saves it to our database.
+Every half hour, it adds those jobs to the queue. The jobs are then picked up by our processors.

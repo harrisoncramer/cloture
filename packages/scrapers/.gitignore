@@ -1,8 +1,6 @@
 **/node_modules
 **.env
 .DS_Store
-**/dist
-**/playground
-output.txt
+**/build
 logs/
 build/

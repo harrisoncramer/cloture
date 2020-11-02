@@ -8,7 +8,7 @@ interface Options {
   pass?: string;
 }
 
-export const connect = async (): Promise<void> => {
+export const connect = async (): Promise<mongoose.Connection> => {
   try {
     // Set password options if in development and mongoose logging
     const options: Options = {
@@ -19,26 +19,29 @@ export const connect = async (): Promise<void> => {
 
     // If in development, set username and password and mongoose debugger
     if (process.env.NODE_ENV === "development") {
-      process.env.MONGOOSE_LOGS === "true" && mongoose.set("debug", true);
-      options.user = process.env.MONGODB_USER || undefined;
-      options.pass = process.env.MONGODB_PASS || undefined;
+      mongoose.set("debug", process.env.MONGOOSE_LOGS === "true");
+      options.user = process.env.MONGODB_USER;
+      options.pass = process.env.MONGODB_PASS;
     }
 
     // If in production, just connect to Atlas
-    await mongoose.connect(process.env.MONGODB_URI, options);
+    await mongoose.connect(process.env.MONGODB_URI as string, options);
+    console.log(`📊 Databases connected`);
   } catch (err) {
     console.log("Could not connect to DB.");
     console.log(err);
     process.exit(1);
   }
 
-  const db = mongoose.connection;
+  const db: mongoose.Connection = mongoose.connection;
 
   db.on("error", (err) => {
     console.log("Error occured in MongoDB.", err);
   });
 
   db.on("disconnected", () => {
-    console.log("Connection to MongoDB closed.");
+    console.log(`📊 Databases disconnected`);
   });
+
+  return db;
 };
