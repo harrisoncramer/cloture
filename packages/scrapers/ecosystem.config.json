@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "parsers",
+      "name": "scrapers",
       "script": "./build/index.js",
       "out_file": "./logs/parsers.log",
       "error_file": "./logs/parsers.err",
