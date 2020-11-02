@@ -1,8 +1,8 @@
 import { Resolver, Query, Arg } from "type-graphql";
 
 // Import GQL and Mongoose types...
-import { HouseCommittee, HouseCommitteeModel } from "types";
-import { CommitteeInput } from "types/shared";
+import { HouseCommittee, HouseCommitteeModel } from "../types";
+import { CommitteeInput } from "../types/shared";
 
 @Resolver()
 export class HouseCommitteeResolver {

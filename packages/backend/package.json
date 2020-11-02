@@ -9,7 +9,6 @@
     "prod:build": "tsc"
   },
   "dependencies": {
-    "types": "1.0.0",
     "@typegoose/typegoose": "^7.3.3",
     "@types/mongoose": "^5.7.36",
     "@types/mongoose-paginate-v2": "^1.3.8",

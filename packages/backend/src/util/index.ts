@@ -1,5 +1,3 @@
-import { SenateCommitteeModel } from "types";
-
 export const populateDatabase = async (): Promise<void> => {
   return undefined;
   //await SenateCommitteeModel.create({
