@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { HouseCommittees } from "../../types";
 
 interface Job {
@@ -124,25 +123,77 @@ const jobCreator = <T>(
   details,
 });
 
-const hjud: HouseJob<V1> = jobCreator(
-  HouseCommittees.HOUSE_JUDICIARY_COMMITTEE,
-  "House Judicary Committee Hearings and Markups",
-  "https://judiciary.house.gov/calendar/eventslisting.aspx?EventTypeID=0&CategoryID=0&Congress=&Count=10",
-  "https://judiciary.house.gov/calendar/",
-  {
-    version: "puppeteerv1",
-    layerOne: {
-      depth: 10,
-      rows: "li.calendar-item",
-    },
-    layerTwo: {
-      title: "h3.news-titler",
-      time: true,
-      date: true,
-      location: { label: true, value: "div.events-location strong" },
-    },
-  }
-);
+//const hapc: HouseJob<V4>[] = [
+//jobCreator(
+//HouseCommittees.HOUSE_APPROPRIATIONS_COMMITTEE,
+//"House Appropriations Committee Hearings",
+//"https://appropriations.house.gov/events/hearings",
+//"https://appropriations.house.gov",
+//{
+//version: "puppeteerv4",
+//layerOne: {
+//depth: 10,
+//upcomingHearings: ".pane-content",
+//hearings: ".views-row",
+//dateTime: ".views-field-field-congress-meeting-date",
+//time: "div.newsie-details span:nth-child(2)",
+//location: ".views-field-field-congress-meeting-location",
+//},
+//}
+//),
+//jobCreator(
+//HouseCommittees.HOUSE_APPROPRIATIONS_COMMITTEE,
+//"House Appropriations Committee Markups",
+//"https://appropriations.house.gov/events/markups",
+//"https://appropriations.house.gov",
+//{
+//version: "puppeteerv4",
+//layerOne: {
+//depth: 10,
+//upcomingHearings: ".pane-content",
+//hearings: ".views-row",
+//dateTime: ".views-field-field-congress-meeting-date",
+//time: "div.newsie-details span:nth-child(2)",
+//location: ".views-field-field-congress-meeting-location",
+//},
+//}
+//),
+//];
+
+//const hbuc: HouseJob<V4>[] = [
+//jobCreator(
+//HouseCommittees.HOUSE_BUDGET_COMMITTEE,
+//"House Budget Committee Hearings",
+//"https://budget.house.gov/legislation/hearings",
+//"https://budget.house.gov",
+//{
+//version: "puppeteerv4",
+//layerOne: {
+//depth: 10,
+//upcomingHearings: ".pane-content",
+//hearings: ".views-row",
+//dateTime: ".views-field-field-congress-meeting-date",
+//time: "div.newsie-details span:nth-child(2)",
+//},
+//}
+//),
+//jobCreator(
+//HouseCommittees.HOUSE_BUDGET_COMMITTEE,
+//"House Budget Committee Markups",
+//"https://budget.house.gov/legislation/markups",
+//"https://budget.house.gov",
+//{
+//version: "puppeteerv4",
+//layerOne: {
+//depth: 10,
+//upcomingHearings: ".pane-content",
+//hearings: ".views-row",
+//dateTime: ".views-field-field-congress-meeting-date",
+//time: "div.newsie-details span:nth-child(2)",
+//},
+//}
+//),
+//];
 
 //const hrle: HouseJob<V6> = jobCreator(
 //HouseCommittees.HOUSE_RULES_COMMITTEE,
@@ -164,6 +215,67 @@ const hjud: HouseJob<V1> = jobCreator(
 //}
 //);
 
+//const smbs: HouseJob<V5> = jobCreator(
+//HouseCommittees.HOUSE_SMALL_BUSINESS_COMMMITTEE,
+//"House Small Business Committee Hearings and Markups",
+//"https://smallbusiness.house.gov/activity/",
+//{
+//version: "puppeteerv5",
+//layerOne: {
+//depth: 3,
+//rows: "ul.calendar-listing li",
+//},
+//layerTwo: {
+//title: "h3.news-titler",
+//jquerySelector: ".topnewstext",
+//locationIndex: null,
+//dateIndex: 0,
+//timeIndex: 1,
+//},
+//}
+//);
+
+//const fisv: HouseJob<V5>[] = [
+//jobCreator(
+//HouseCommittees.HOUSE_FINANCIAL_SERVICES_COMMITTEE,
+//"House Financial Services Committee Hearings and Markups",
+//"https://financialservices.house.gov/calendar/",
+//{
+//version: "puppeteerv5",
+//layerOne: {
+//depth: 8,
+//rows: ".newsie-titler",
+//},
+//layerTwo: {
+//title: "h3.news-titler",
+//jquerySelector: ".topnewstext",
+//locationIndex: 0,
+//dateIndex: 1,
+//timeIndex: 2,
+//},
+//}
+//),
+//];
+
+const hjud: HouseJob<V1> = jobCreator(
+  HouseCommittees.HOUSE_JUDICIARY_COMMITTEE,
+  "House Judicary Committee Hearings and Markups",
+  "https://judiciary.house.gov/calendar/eventslisting.aspx?EventTypeID=0&CategoryID=0&Congress=&Count=10",
+  "https://judiciary.house.gov/calendar/",
+  {
+    version: "puppeteerv1",
+    layerOne: {
+      depth: 10,
+      rows: "li.calendar-item",
+    },
+    layerTwo: {
+      title: "h3.news-titler",
+      time: true,
+      date: true,
+      location: { label: true, value: "div.events-location strong" },
+    },
+  }
+);
 const hfac: HouseJob<V1>[] = [
   jobCreator(
     HouseCommittees.HOUSE_FOREIGN_AFFAIRS_COMMITTEE,
@@ -318,79 +430,6 @@ const hagc: HouseJob<V1> = jobCreator(
     },
   }
 );
-
-//const hapc: HouseJob<V4>[] = [
-//jobCreator(
-//HouseCommittees.HOUSE_APPROPRIATIONS_COMMITTEE,
-//"House Appropriations Committee Hearings",
-//"https://appropriations.house.gov/events/hearings",
-//"https://appropriations.house.gov",
-//{
-//version: "puppeteerv4",
-//layerOne: {
-//depth: 10,
-//upcomingHearings: ".pane-content",
-//hearings: ".views-row",
-//dateTime: ".views-field-field-congress-meeting-date",
-//time: "div.newsie-details span:nth-child(2)",
-//location: ".views-field-field-congress-meeting-location",
-//},
-//}
-//),
-//jobCreator(
-//HouseCommittees.HOUSE_APPROPRIATIONS_COMMITTEE,
-//"House Appropriations Committee Markups",
-//"https://appropriations.house.gov/events/markups",
-//"https://appropriations.house.gov",
-//{
-//version: "puppeteerv4",
-//layerOne: {
-//depth: 10,
-//upcomingHearings: ".pane-content",
-//hearings: ".views-row",
-//dateTime: ".views-field-field-congress-meeting-date",
-//time: "div.newsie-details span:nth-child(2)",
-//location: ".views-field-field-congress-meeting-location",
-//},
-//}
-//),
-//];
-
-//const hbuc: HouseJob<V4>[] = [
-//jobCreator(
-//HouseCommittees.HOUSE_BUDGET_COMMITTEE,
-//"House Budget Committee Hearings",
-//"https://budget.house.gov/legislation/hearings",
-//"https://budget.house.gov",
-//{
-//version: "puppeteerv4",
-//layerOne: {
-//depth: 10,
-//upcomingHearings: ".pane-content",
-//hearings: ".views-row",
-//dateTime: ".views-field-field-congress-meeting-date",
-//time: "div.newsie-details span:nth-child(2)",
-//},
-//}
-//),
-//jobCreator(
-//HouseCommittees.HOUSE_BUDGET_COMMITTEE,
-//"House Budget Committee Markups",
-//"https://budget.house.gov/legislation/markups",
-//"https://budget.house.gov",
-//{
-//version: "puppeteerv4",
-//layerOne: {
-//depth: 10,
-//upcomingHearings: ".pane-content",
-//hearings: ".views-row",
-//dateTime: ".views-field-field-congress-meeting-date",
-//time: "div.newsie-details span:nth-child(2)",
-//},
-//}
-//),
-//];
-
 const help: HouseJob<V1>[] = [
   jobCreator(
     HouseCommittees.HOUSE_EDUCATION_AND_LABOR_COMMITTEE,
@@ -466,29 +505,6 @@ const nrgy: HouseJob<V2>[] = [
     }
   ),
 ];
-
-//const fisv: HouseJob<V5>[] = [
-//jobCreator(
-//HouseCommittees.HOUSE_FINANCIAL_SERVICES_COMMITTEE,
-//"House Financial Services Committee Hearings and Markups",
-//"https://financialservices.house.gov/calendar/",
-//{
-//version: "puppeteerv5",
-//layerOne: {
-//depth: 8,
-//rows: ".newsie-titler",
-//},
-//layerTwo: {
-//title: "h3.news-titler",
-//jquerySelector: ".topnewstext",
-//locationIndex: 0,
-//dateIndex: 1,
-//timeIndex: 2,
-//},
-//}
-//),
-//];
-
 const admn: HouseJob<V2>[] = [
   jobCreator(
     HouseCommittees.HOUSE_ADMINISTRATION_COMMITTEE,
@@ -642,27 +658,6 @@ const scnc: HouseJob<V2>[] = [
     }
   ),
 ];
-
-//const smbs: HouseJob<V5> = jobCreator(
-//HouseCommittees.HOUSE_SMALL_BUSINESS_COMMMITTEE,
-//"House Small Business Committee Hearings and Markups",
-//"https://smallbusiness.house.gov/activity/",
-//{
-//version: "puppeteerv5",
-//layerOne: {
-//depth: 3,
-//rows: "ul.calendar-listing li",
-//},
-//layerTwo: {
-//title: "h3.news-titler",
-//jquerySelector: ".topnewstext",
-//locationIndex: null,
-//dateIndex: 0,
-//timeIndex: 1,
-//},
-//}
-//);
-
 const trns: HouseJob<V2>[] = [
   jobCreator(
     HouseCommittees.HOUSE_TRANSPORTATION_AND_INFRASTRUCTURE_COMMITTEE,
