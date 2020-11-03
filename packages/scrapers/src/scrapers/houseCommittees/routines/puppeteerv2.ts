@@ -39,6 +39,8 @@ export const puppeteerv2 = async (
     console.error("Could not get page text. ", err);
   }
 
+  console.log(dataWithLinks);
+
   try {
     const pages = await browser.pages();
     await Promise.all(

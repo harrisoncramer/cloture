@@ -1,4 +1,4 @@
-// @ts-nocheck
+//@ts-nocheck
 import { HouseCommittees } from "../../types";
 
 interface Job {
@@ -128,7 +128,7 @@ const hjud: HouseJob<V1> = jobCreator(
   HouseCommittees.HOUSE_JUDICIARY_COMMITTEE,
   "House Judicary Committee Hearings and Markups",
   "https://judiciary.house.gov/calendar/eventslisting.aspx?EventTypeID=0&CategoryID=0&Congress=&Count=10",
-  "https://judiciary.house.gov/calendar",
+  "https://judiciary.house.gov/calendar/",
   {
     version: "puppeteerv1",
     layerOne: {
@@ -144,25 +144,25 @@ const hjud: HouseJob<V1> = jobCreator(
   }
 );
 
-const hrle: HouseJob<V6> = jobCreator(
-  HouseCommittees.HOUSE_RULES_COMMITTEE,
-  "House Rules Committee",
-  "https://rules.house.gov/media",
-  "https://rules.house.gov",
-  {
-    version: "puppeteerv6",
-    layerOne: {
-      depth: 10,
-      filter: { keyword: "meeting", selector: "h3" },
-      rows: "div.view-content .views-row",
-    },
-    layerTwo: {
-      title: ".title",
-      time: true,
-      date: true,
-    },
-  }
-);
+//const hrle: HouseJob<V6> = jobCreator(
+//HouseCommittees.HOUSE_RULES_COMMITTEE,
+//"House Rules Committee",
+//"https://rules.house.gov/media",
+//"https://rules.house.gov",
+//{
+//version: "puppeteerv6",
+//layerOne: {
+//depth: 10,
+//filter: { keyword: "meeting", selector: "h3" },
+//rows: "div.view-content .views-row",
+//},
+//layerTwo: {
+//title: ".title",
+//time: true,
+//date: true,
+//},
+//}
+//);
 
 const hfac: HouseJob<V1>[] = [
   jobCreator(
@@ -356,40 +356,40 @@ const hagc: HouseJob<V1> = jobCreator(
 //),
 //];
 
-const hbuc: HouseJob<V4>[] = [
-  jobCreator(
-    HouseCommittees.HOUSE_BUDGET_COMMITTEE,
-    "House Budget Committee Hearings",
-    "https://budget.house.gov/legislation/hearings",
-    "https://budget.house.gov",
-    {
-      version: "puppeteerv4",
-      layerOne: {
-        depth: 10,
-        upcomingHearings: ".pane-content",
-        hearings: ".views-row",
-        dateTime: ".views-field-field-congress-meeting-date",
-        time: "div.newsie-details span:nth-child(2)",
-      },
-    }
-  ),
-  jobCreator(
-    HouseCommittees.HOUSE_BUDGET_COMMITTEE,
-    "House Budget Committee Markups",
-    "https://budget.house.gov/legislation/markups",
-    "https://budget.house.gov",
-    {
-      version: "puppeteerv4",
-      layerOne: {
-        depth: 10,
-        upcomingHearings: ".pane-content",
-        hearings: ".views-row",
-        dateTime: ".views-field-field-congress-meeting-date",
-        time: "div.newsie-details span:nth-child(2)",
-      },
-    }
-  ),
-];
+//const hbuc: HouseJob<V4>[] = [
+//jobCreator(
+//HouseCommittees.HOUSE_BUDGET_COMMITTEE,
+//"House Budget Committee Hearings",
+//"https://budget.house.gov/legislation/hearings",
+//"https://budget.house.gov",
+//{
+//version: "puppeteerv4",
+//layerOne: {
+//depth: 10,
+//upcomingHearings: ".pane-content",
+//hearings: ".views-row",
+//dateTime: ".views-field-field-congress-meeting-date",
+//time: "div.newsie-details span:nth-child(2)",
+//},
+//}
+//),
+//jobCreator(
+//HouseCommittees.HOUSE_BUDGET_COMMITTEE,
+//"House Budget Committee Markups",
+//"https://budget.house.gov/legislation/markups",
+//"https://budget.house.gov",
+//{
+//version: "puppeteerv4",
+//layerOne: {
+//depth: 10,
+//upcomingHearings: ".pane-content",
+//hearings: ".views-row",
+//dateTime: ".views-field-field-congress-meeting-date",
+//time: "div.newsie-details span:nth-child(2)",
+//},
+//}
+//),
+//];
 
 const help: HouseJob<V1>[] = [
   jobCreator(
@@ -432,38 +432,40 @@ const help: HouseJob<V1>[] = [
   ),
 ];
 
-//const nrgy: HouseJob<V2>[] = [
-//jobCreator(
-//HouseCommittees.HOUSE_ENERGY_AND_COMMERCE_COMMITTEE,
-//"House Energy and Commerce Committee Hearings",
-//"https://energycommerce.house.gov/committee-activity/hearings",
-//{
-//version: "puppeteerv2",
-//layerOne: {
-//depth: 10,
-//rows: ".views-row",
-//date: { selector: ".date-display-single", instance: 0 },
-//splitDate: "-",
-//location: ".views-field-field-congress-meeting-location",
-//},
-//}
-//),
-//jobCreator(
-//HouseCommittees.HOUSE_ENERGY_AND_COMMERCE_COMMITTEE,
-//"House Energy and Commerce Committee Markups",
-//"https://energycommerce.house.gov/committee-activity/markups",
-//{
-//version: "puppeteerv2",
-//layerOne: {
-//depth: 10,
-//rows: ".views-row",
-//date: { selector: ".date-display-single", instance: 0 },
-//splitDate: "-",
-//location: ".views-field-field-congress-meeting-location",
-//},
-//}
-//),
-//];
+const nrgy: HouseJob<V2>[] = [
+  jobCreator(
+    HouseCommittees.HOUSE_ENERGY_AND_COMMERCE_COMMITTEE,
+    "House Energy and Commerce Committee Hearings",
+    "https://energycommerce.house.gov/committee-activity/hearings",
+    "https://energycommerce.house.gov/",
+    {
+      version: "puppeteerv2",
+      layerOne: {
+        depth: 10,
+        rows: ".views-row",
+        date: { selector: ".date-display-single", instance: 0 },
+        splitDate: "-",
+        location: ".views-field-field-congress-meeting-location",
+      },
+    }
+  ),
+  jobCreator(
+    HouseCommittees.HOUSE_ENERGY_AND_COMMERCE_COMMITTEE,
+    "House Energy and Commerce Committee Markups",
+    "https://energycommerce.house.gov/committee-activity/markups",
+    "https://energycommerce.house.gov/",
+    {
+      version: "puppeteerv2",
+      layerOne: {
+        depth: 10,
+        rows: ".views-row",
+        date: { selector: ".date-display-single", instance: 0 },
+        splitDate: "-",
+        location: ".views-field-field-congress-meeting-location",
+      },
+    }
+  ),
+];
 
 //const fisv: HouseJob<V5>[] = [
 //jobCreator(
@@ -538,102 +540,108 @@ const admn: HouseJob<V2>[] = [
   ),
 ];
 
-//const ntty: HouseJob<V2> = jobCreator(
-//HouseCommittees.HOUSE_NATURAL_RESOURCES_COMMITTEE,
-//"House Natural Resources Committee Hearings",
-//"https://naturalresources.house.gov/hearings",
-//{
-//version: "puppeteerv2",
-//layerOne: {
-//depth: 10,
-//rows: "tr.vevent",
-//date: { selector: "time.dtstart", instance: 0 },
-//splitDate: " ",
-//location: "span.location",
-//},
-//}
-//);
+const ntty: HouseJob<V2> = jobCreator(
+  HouseCommittees.HOUSE_NATURAL_RESOURCES_COMMITTEE,
+  "House Natural Resources Committee Hearings",
+  "https://naturalresources.house.gov/hearings",
+  "https://naturalresources.house.gov/",
+  {
+    version: "puppeteerv2",
+    layerOne: {
+      depth: 10,
+      rows: "tr.vevent",
+      date: { selector: "time.dtstart", instance: 0 },
+      splitDate: " ",
+      location: "span.location",
+    },
+  }
+);
 
-//const ovst: HouseJob<V2>[] = [
-//jobCreator(
-//HouseCommittees.HOUSE_OVERSIGHT_AND_REFORM_COMMITTEE,
-//"House Oversight Committee Hearings",
-//"https://oversight.house.gov/legislation/hearings",
-//{
-//version: "puppeteerv2",
-//layerOne: {
-//depth: 10,
-//rows: ".views-row",
-//date: { selector: "span.date-display-single", instance: 0 },
-//splitDate: "-",
-//location: ".views-field-field-congress-meeting-location .field-content",
-//},
-//}
-//),
-//jobCreator(
-//HouseCommittees.HOUSE_OVERSIGHT_AND_REFORM_COMMITTEE,
-//"House Oversight Committee Markups",
-//"https://oversight.house.gov/legislation/business-meetings",
-//{
-//version: "puppeteerv2",
-//layerOne: {
-//depth: 10,
-//rows:
-//".pane-cng-meetings-panel-pane-business-meetings-upcoming .views-row",
-//date: { selector: "span.date-display-single", instance: 0 },
-//splitDate: "-",
-//location: ".views-field-field-congress-meeting-location .field-content",
-//},
-//}
-//),
-//jobCreator(
-//HouseCommittees.HOUSE_OVERSIGHT_AND_REFORM_COMMITTEE,
-//"House Oversight Committee Briefings",
-//"https://oversight.house.gov/legislation/briefings",
-//{
-//version: "puppeteerv2",
-//layerOne: {
-//depth: 10,
-//rows: ".views-row",
-//splitDate: "-",
-//date: { selector: "span.date-display-single", instance: 0 },
-//},
-//}
-//),
-//];
+const ovst: HouseJob<V2>[] = [
+  jobCreator(
+    HouseCommittees.HOUSE_OVERSIGHT_AND_REFORM_COMMITTEE,
+    "House Oversight Committee Hearings",
+    "https://oversight.house.gov/legislation/hearings",
+    "https://oversight.house.gov",
+    {
+      version: "puppeteerv2",
+      layerOne: {
+        depth: 10,
+        rows: ".views-row",
+        date: { selector: "span.date-display-single", instance: 0 },
+        splitDate: "-",
+        location: ".views-field-field-congress-meeting-location .field-content",
+      },
+    }
+  ),
+  jobCreator(
+    HouseCommittees.HOUSE_OVERSIGHT_AND_REFORM_COMMITTEE,
+    "House Oversight Committee Markups",
+    "https://oversight.house.gov/legislation/business-meetings",
+    "https://oversight.house.gov",
+    {
+      version: "puppeteerv2",
+      layerOne: {
+        depth: 10,
+        rows:
+          ".pane-cng-meetings-panel-pane-business-meetings-upcoming .views-row",
+        date: { selector: "span.date-display-single", instance: 0 },
+        splitDate: "-",
+        location: ".views-field-field-congress-meeting-location .field-content",
+      },
+    }
+  ),
+  jobCreator(
+    HouseCommittees.HOUSE_OVERSIGHT_AND_REFORM_COMMITTEE,
+    "House Oversight Committee Briefings",
+    "https://oversight.house.gov/legislation/briefings",
+    "https://oversight.house.gov",
+    {
+      version: "puppeteerv2",
+      layerOne: {
+        depth: 10,
+        rows: ".views-row",
+        splitDate: "-",
+        date: { selector: "span.date-display-single", instance: 0 },
+      },
+    }
+  ),
+];
 
-//const scnc: HouseJob<V2>[] = [
-//jobCreator(
-//HouseCommittees.HOUSE_SCIENCE_SPACE_AND_TECHNOLOGY_COMMITTEE,
-//"House Science Committee Hearings",
-//"https://science.house.gov/hearings",
-//{
-//version: "puppeteerv2",
-//layerOne: {
-//depth: 10,
-//rows: "#hearings--upcoming div.hearing",
-//date: { selector: ".hearing__date", instance: 0 },
-//time: { selector: ".hearing__time time", instance: 0 },
-//location: ".hearing__location",
-//},
-//}
-//),
-//jobCreator(
-//HouseCommittees.HOUSE_SCIENCE_SPACE_AND_TECHNOLOGY_COMMITTEE,
-//"House Science Committee Markups",
-//"https://science.house.gov/markups",
-//{
-//version: "puppeteerv2",
-//layerOne: {
-//depth: 10,
-//rows: "#hearings--upcoming div.hearing",
-//date: { selector: ".hearing__date", instance: 0 },
-//time: { selector: ".hearing__time time", instance: 0 },
-//location: ".hearing__location",
-//},
-//}
-//),
-//];
+const scnc: HouseJob<V2>[] = [
+  jobCreator(
+    HouseCommittees.HOUSE_SCIENCE_SPACE_AND_TECHNOLOGY_COMMITTEE,
+    "House Science Committee Hearings",
+    "https://science.house.gov/hearings",
+    "https://science.house.gov",
+    {
+      version: "puppeteerv2",
+      layerOne: {
+        depth: 10,
+        rows: "div.hearing",
+        date: { selector: ".hearing__date", instance: 0 },
+        time: { selector: ".hearing__time time", instance: 0 },
+        location: ".hearing__location",
+      },
+    }
+  ),
+  jobCreator(
+    HouseCommittees.HOUSE_SCIENCE_SPACE_AND_TECHNOLOGY_COMMITTEE,
+    "House Science Committee Markups",
+    "https://science.house.gov/markups",
+    "https://science.house.gov",
+    {
+      version: "puppeteerv2",
+      layerOne: {
+        depth: 10,
+        rows: "div.hearing",
+        date: { selector: ".hearing__date", instance: 0 },
+        time: { selector: ".hearing__time time", instance: 0 },
+        location: ".hearing__location",
+      },
+    }
+  ),
+];
 
 //const smbs: HouseJob<V5> = jobCreator(
 //HouseCommittees.HOUSE_SMALL_BUSINESS_COMMMITTEE,
@@ -655,97 +663,102 @@ const admn: HouseJob<V2>[] = [
 //}
 //);
 
-//const trns: HouseJob<V2>[] = [
-//jobCreator(
-//HouseCommittees.HOUSE_TRANSPORTATION_AND_INFRASTRUCTURE_COMMITTEE,
-//"House Transportation Committee Hearings",
-//"https://transportation.house.gov/committee-activity/hearings",
-//{
-//version: "puppeteerv2",
-//layerOne: {
-//depth: 10,
-//rows: "div.hearings-table table tr.vevent",
-//date: { selector: "time.dtstart", instance: 0 },
-//time: { selector: "time.dtstart", instance: 1 }, // Zero indexed, second option
-//location: "span.location",
-//},
-//}
-//),
-//jobCreator(
-//HouseCommittees.HOUSE_TRANSPORTATION_AND_INFRASTRUCTURE_COMMITTEE,
-//"House Transportation Committee Markups",
-//"https://transportation.house.gov/committee-activity/markups",
-//{
-//version: "puppeteerv2",
-//layerOne: {
-//depth: 10,
-//rows: "div.hearings-table table tr.vevent",
-//date: { selector: "time.dtstart", instance: 0 },
-//time: { selector: "time.dtstart", instance: 1 }, // Zero indexed, second option
-//},
-//}
-//),
-//];
+const trns: HouseJob<V2>[] = [
+  jobCreator(
+    HouseCommittees.HOUSE_TRANSPORTATION_AND_INFRASTRUCTURE_COMMITTEE,
+    "House Transportation Committee Hearings",
+    "https://transportation.house.gov/committee-activity/hearings",
+    "https://transportation.house.gov",
+    {
+      version: "puppeteerv2",
+      layerOne: {
+        depth: 10,
+        rows: "div.hearings-table table tr.vevent",
+        date: { selector: "time.dtstart", instance: 0 },
+        time: { selector: "time.dtstart", instance: 1 }, // Zero indexed, second option
+        location: "span.location",
+      },
+    }
+  ),
+  jobCreator(
+    HouseCommittees.HOUSE_TRANSPORTATION_AND_INFRASTRUCTURE_COMMITTEE,
+    "House Transportation Committee Markups",
+    "https://transportation.house.gov/committee-activity/markups",
+    "https://transportation.house.gov",
+    {
+      version: "puppeteerv2",
+      layerOne: {
+        depth: 10,
+        rows: "div.hearings-table table tr.vevent",
+        date: { selector: "time.dtstart", instance: 0 },
+        time: { selector: "time.dtstart", instance: 1 }, // Zero indexed, second option
+      },
+    }
+  ),
+];
 
-//const wymn: HouseJob<V1>[] = [
-//jobCreator(
-//HouseCommittees.HOUSE_WAYS_AND_MEANS_COMMITTEE,
-//"House Ways and Means Committee Hearings",
-//"https://waysandmeans.house.gov/legislation/hearings",
-//{
-//version: "puppeteerv1",
-//layerOne: {
-//depth: 10,
-//rows: ".pane-congress-hearings-panel-pane-hearings-upcoming .views-row",
-//},
-//layerTwo: {
-//date: { label: false, value: "span.date-display-single" },
-//title: "h1.title",
-//splitDate: "-",
-//location: {
-//label: false,
-//value: ".field-name-field-congress-meeting-location .field-label",
-//},
-//},
-//}
-//),
-//jobCreator(
-//HouseCommittees.HOUSE_WAYS_AND_MEANS_COMMITTEE,
-//"House Ways and Means Committee Markups",
-//"https://waysandmeans.house.gov/legislation/markups",
-//{
-//version: "puppeteerv1",
-//layerOne: {
-//depth: 10,
-//rows: ".pane-congress-markups-panel-pane-markups-upcoming .views-row",
-//},
-//layerTwo: {
-//title: "h1.title",
-//date: { label: false, value: "span.date-display-single" },
-//splitDate: "-",
-//location: {
-//label: false,
-//value: ".field-name-field-congress-meeting-location .field-label",
-//},
-//},
-//}
-//),
-//];
+const wymn: HouseJob<V1>[] = [
+  jobCreator(
+    HouseCommittees.HOUSE_WAYS_AND_MEANS_COMMITTEE,
+    "House Ways and Means Committee Hearings",
+    "https://waysandmeans.house.gov/legislation/hearings",
+    "https://waysandmeans.house.gov/",
+    {
+      version: "puppeteerv1",
+      layerOne: {
+        depth: 10,
+        rows: ".views-row",
+      },
+      layerTwo: {
+        date: { label: false, value: "span.date-display-single" },
+        title: "h1.title",
+        splitDate: "-",
+        location: {
+          label: false,
+          value: ".field-name-field-congress-meeting-location .field-label",
+        },
+      },
+    }
+  ),
+  jobCreator(
+    HouseCommittees.HOUSE_WAYS_AND_MEANS_COMMITTEE,
+    "House Ways and Means Committee Markups",
+    "https://waysandmeans.house.gov/legislation/markups",
+    "https://waysandmeans.house.gov/",
+    {
+      version: "puppeteerv1",
+      layerOne: {
+        depth: 10,
+        rows: ".views-row",
+      },
+      layerTwo: {
+        title: "h1.title",
+        date: { label: false, value: "span.date-display-single" },
+        splitDate: "-",
+        location: {
+          label: false,
+          value: ".field-name-field-congress-meeting-location .field-label",
+        },
+      },
+    }
+  ),
+];
 
-//const clmt: HouseJob<V2> = jobCreator(
-//HouseCommittees.HOUSE_CLIMATE_COMMITTEE,
-//"House Climate Committee Hearings",
-//"https://climatecrisis.house.gov/committee-activity/hearings",
-//{
-//version: "puppeteerv2",
-//layerOne: {
-//depth: 10,
-//rows: ".views-row",
-//date: { selector: "span.date-display-single", instance: 0 },
-//splitDate: "-",
-//},
-//}
-//);
+const clmt: HouseJob<V2> = jobCreator(
+  HouseCommittees.HOUSE_CLIMATE_COMMITTEE,
+  "House Climate Committee Hearings",
+  "https://climatecrisis.house.gov/committee-activity/hearings",
+  "https://climatecrisis.house.gov/",
+  {
+    version: "puppeteerv2",
+    layerOne: {
+      depth: 10,
+      rows: ".views-row",
+      date: { selector: "span.date-display-single", instance: 0 },
+      splitDate: "-",
+    },
+  }
+);
 
 export const houseJobs: (
   | HouseJob<V1>
@@ -754,24 +767,25 @@ export const houseJobs: (
   | HouseJob<V5>
   | HouseJob<V6>
 )[] = [
-  //...admn,
+  ...admn,
   ...hfac,
-  //hagc,
+  hagc,
+  hasc,
+  clmt,
+  ...help,
+  ...nrgy,
+  hjud,
+  ...hhsc,
+  ntty,
+  ...ovst,
+  ...scnc,
+  ...trns,
+  ...hvac,
+  ...wymn,
+  //// USE DIFFERENT SCRAPERS
   //...hapc,
-  //hasc,
   //...hbuc,
-  //clmt,
-  //...help,
-  //...nrgy,
   //...fisv,
-  //hjud,
   //hrle,
-  //...hhsc,
-  //ntty,
-  //...ovst,
-  //...scnc,
   //smbs,
-  //...trns,
-  //...hvac,
-  //...wymn,
 ];

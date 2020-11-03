@@ -116,14 +116,18 @@ export const getLinksAndData = async ({
           .find(selectors.date.selector)
           .toArray()
           .find((x, i) => i === selectors.date.instance)
-      ).text();
+      )
+        .text()
+        .replace(/[\s,\t,\n]+/g, " ");
       let time = selectors.time
         ? $(
             target
               .find(selectors.time.selector)
               .toArray()
               .find((x, i) => i === selectors?.time?.instance)
-          ).text()
+          )
+            .text()
+            .replace(/[\s,\t,\n]+/g, " ")
         : null;
       if (selectors.splitDate) {
         time = date && clean(date.split(selectors.splitDate)[1]);
@@ -147,7 +151,9 @@ export const getPageData = async ({
       const link = page.url();
       const html = await page.evaluate(() => document.body.innerHTML);
       const $ = cheerio.load(html);
-      const title = $(selectors.title).text();
+      const title = $(selectors.title)
+        .text()
+        .replace(/[\s,\t,\n]+/g, " ");
 
       // If necessary, delete extra text froim title
       if (selectors.titleTrimRegex) {
