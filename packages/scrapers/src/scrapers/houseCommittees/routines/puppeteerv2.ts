@@ -1,21 +1,16 @@
 import puppeteer from "puppeteer";
 
-import {
-  getLinksAndData,
-  getPageText,
-  setPageBlockers,
-  setPageScripts,
-  setInitialPage,
-} from "./common";
+import { getLinksAndData, getPageText, setPageBlockers } from "./common";
 
 // Import job types
 import { HouseJob, V2 } from "../jobs";
 
 export const puppeteerv2 = async (
   browser: puppeteer.Browser,
+  page: puppeteer.Page,
   job: HouseJob<V2>
 ) => {
-  const page: puppeteer.Page = await setInitialPage(browser, job.link);
+  await page.goto(job.link);
 
   let dataWithLinks;
 
@@ -23,19 +18,20 @@ export const puppeteerv2 = async (
     dataWithLinks = await getLinksAndData({
       page,
       selectors: job.details.layerOne,
+      origin: job.origin,
     });
   } catch (err) {
     console.error("Could not get links. ", err);
     throw err;
   }
+
   try {
     dataWithLinks = await Promise.all(
       dataWithLinks.map(async (datum: any) => {
-        let page = await browser.newPage();
+        const page = await browser.newPage();
         await setPageBlockers(page);
-        await setPageScripts(page);
         await page.goto(datum.link);
-        let text = await getPageText(page);
+        const text = await getPageText(page);
         return { ...datum, text };
       })
     );
@@ -44,7 +40,7 @@ export const puppeteerv2 = async (
   }
 
   try {
-    let pages = await browser.pages();
+    const pages = await browser.pages();
     await Promise.all(
       pages.map(async (page, i) => i > 0 && (await page.close()))
     );

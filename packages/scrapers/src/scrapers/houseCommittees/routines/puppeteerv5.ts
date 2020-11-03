@@ -3,18 +3,15 @@ import puppeteer from "puppeteer";
 // Import job types
 import { HouseJob, V5 } from "../jobs";
 
-import {
-  getLinks,
-  getPageDataWithJQuery,
-  openNewPages,
-  setInitialPage,
-} from "./common";
+import { getLinks, getPageDataWithJQuery, openNewPages } from "./common";
 
 export const puppeteerv5 = async (
   browser: puppeteer.Browser,
+  page: puppeteer.Page,
   job: HouseJob<V5>
 ) => {
-  const page: puppeteer.Page = await setInitialPage(browser, job.link);
+  const link = new URL(job.link);
+  await page.goto(link.href);
 
   let links;
   let pages;
@@ -24,6 +21,7 @@ export const puppeteerv5 = async (
     links = await getLinks({
       page,
       selectors: job.details.layerOne,
+      origin: job.link,
     });
   } catch (err) {
     console.error("Could not get links. ", err);
@@ -48,7 +46,7 @@ export const puppeteerv5 = async (
   }
 
   try {
-    let pages = await browser.pages();
+    const pages = await browser.pages();
     await Promise.all(
       pages.map(async (page, i) => i > 0 && (await page.close()))
     );

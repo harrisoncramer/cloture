@@ -55,11 +55,11 @@ const runProgram = async () => {
     await houseCommitteeQueue.createJobs({ retries: 1, timeout: 20000 }, [
       ...houseJobs,
     ]);
-  }, 1800000);
+  }, 5000);
 
-  crsQueue.process();
-  statePressReleasesQueue.process();
-  senateDisclosureQueue.process();
+  //crsQueue.process();
+  //statePressReleasesQueue.process();
+  //senateDisclosureQueue.process();
   houseCommitteeQueue.process();
 };
 

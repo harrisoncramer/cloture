@@ -1,6 +1,6 @@
 import randomUser from "random-useragent";
 import puppeteer from "puppeteer";
-import functions from "../common/functions";
+import functions from "./functions";
 
 export const setPageBlockers = async (page: puppeteer.Page) => {
   await page.setRequestInterception(true);
@@ -67,27 +67,23 @@ export const setPageScripts = async (page: puppeteer.Page): Promise<void> => {
 };
 
 export const setInitialPage = async (
-  browser: puppeteer.Browser,
-  link: string
+  browser: puppeteer.Browser
 ): Promise<puppeteer.Page> => {
   const page = await browser.newPage();
-  let userAgentString = randomUser.getRandom();
+  const userAgentString = randomUser.getRandom();
   await page.setUserAgent(userAgentString || "");
   await setPageBlockers(page);
-  await setPageScripts(page);
-  await page.goto(link);
   return page;
 };
 
 export const openNewPages = async (browser: puppeteer.Browser, links: any) => {
-  let pages: puppeteer.Page[] = await Promise.all(
+  const pages: puppeteer.Page[] = await Promise.all(
     links.map(() => browser.newPage())
   );
-  let navResults = await Promise.allSettled(
+  const navResults = await Promise.allSettled(
     pages.map(async (page, i) => {
       try {
         await setPageBlockers(page);
-        await setPageScripts(page);
         await page.goto(links[i]);
         return Promise.resolve({ page, err: null, link: null });
       } catch (err) {
@@ -96,11 +92,11 @@ export const openNewPages = async (browser: puppeteer.Browser, links: any) => {
     })
   );
 
-  let successfulNavigations = navResults
+  const successfulNavigations = navResults
     .filter((x) => x.status === "fulfilled")
     //@ts-ignore
     .map((x) => x.value);
-  let failedNavigations = navResults
+  const failedNavigations = navResults
     .filter((x) => x.status !== "fulfilled")
     //@ts-ignore
     .map((x) => x.reason);
