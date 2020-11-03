@@ -44,8 +44,6 @@ export const puppeteerv1 = async (
     throw err;
   }
 
-  console.log(pageData);
-
   try {
     const pages = await browser.pages();
     await Promise.all(

@@ -1,27 +1,24 @@
 import puppeteer from "puppeteer";
 
-// Import job types
-import { HouseJob, V5 } from "../jobs";
-
 import { getLinks, getPageDataWithJQuery, openNewPages } from "./common";
+import { HouseJob, V5 } from "../jobs";
 
 export const puppeteerv5 = async (
   browser: puppeteer.Browser,
   page: puppeteer.Page,
   job: HouseJob<V5>
 ) => {
-  const link = new URL(job.link);
-  await page.goto(link.href);
+  await page.goto(job.link);
 
-  let links;
-  let pages;
+  let links: (string | null)[];
+  let pages: puppeteer.Page[] | null;
   let pageData;
 
   try {
     links = await getLinks({
       page,
       selectors: job.details.layerOne,
-      origin: job.link,
+      origin: job.origin,
     });
   } catch (err) {
     console.error("Could not get links. ", err);

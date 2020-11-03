@@ -195,67 +195,69 @@ const jobCreator = <T>(
 //),
 //];
 
-//const hrle: HouseJob<V6> = jobCreator(
-//HouseCommittees.HOUSE_RULES_COMMITTEE,
-//"House Rules Committee",
-//"https://rules.house.gov/media",
-//"https://rules.house.gov",
-//{
-//version: "puppeteerv6",
-//layerOne: {
-//depth: 10,
-//filter: { keyword: "meeting", selector: "h3" },
-//rows: "div.view-content .views-row",
-//},
-//layerTwo: {
-//title: ".title",
-//time: true,
-//date: true,
-//},
-//}
-//);
+const hrle: HouseJob<V6> = jobCreator(
+  HouseCommittees.HOUSE_RULES_COMMITTEE,
+  "House Rules Committee",
+  "https://rules.house.gov/media",
+  "https://rules.house.gov",
+  {
+    version: "puppeteerv6",
+    layerOne: {
+      depth: 10,
+      filter: { keyword: "meeting", selector: "h3" },
+      rows: "div.view-content .views-row",
+    },
+    layerTwo: {
+      title: ".title",
+      time: true,
+      date: true,
+    },
+  }
+);
 
-//const smbs: HouseJob<V5> = jobCreator(
-//HouseCommittees.HOUSE_SMALL_BUSINESS_COMMMITTEE,
-//"House Small Business Committee Hearings and Markups",
-//"https://smallbusiness.house.gov/activity/",
-//{
-//version: "puppeteerv5",
-//layerOne: {
-//depth: 3,
-//rows: "ul.calendar-listing li",
-//},
-//layerTwo: {
-//title: "h3.news-titler",
-//jquerySelector: ".topnewstext",
-//locationIndex: null,
-//dateIndex: 0,
-//timeIndex: 1,
-//},
-//}
-//);
+const smbs: HouseJob<V5> = jobCreator(
+  HouseCommittees.HOUSE_SMALL_BUSINESS_COMMMITTEE,
+  "House Small Business Committee Hearings and Markups",
+  "https://smallbusiness.house.gov/activity/",
+  "https://smallbusiness.house.gov",
+  {
+    version: "puppeteerv5",
+    layerOne: {
+      depth: 3,
+      rows: "ul.calendar-listing li",
+    },
+    layerTwo: {
+      title: "h3.news-titler",
+      jquerySelector: ".topnewstext",
+      locationIndex: null,
+      dateIndex: 0,
+      timeIndex: 1,
+    },
+  }
+);
 
-//const fisv: HouseJob<V5>[] = [
-//jobCreator(
-//HouseCommittees.HOUSE_FINANCIAL_SERVICES_COMMITTEE,
-//"House Financial Services Committee Hearings and Markups",
-//"https://financialservices.house.gov/calendar/",
-//{
-//version: "puppeteerv5",
-//layerOne: {
-//depth: 8,
-//rows: ".newsie-titler",
-//},
-//layerTwo: {
-//title: "h3.news-titler",
-//jquerySelector: ".topnewstext",
-//locationIndex: 0,
-//dateIndex: 1,
-//timeIndex: 2,
-//},
-//}
-//),
-//];
+const fisv: HouseJob<V5>[] = [
+  jobCreator(
+    HouseCommittees.HOUSE_FINANCIAL_SERVICES_COMMITTEE,
+    "House Financial Services Committee Hearings and Markups",
+    "https://financialservices.house.gov/calendar/",
+    "https://financialservices.house.gov/calendar/",
+    {
+      version: "puppeteerv5",
+      layerOne: {
+        depth: 8,
+        rows: ".newsie-titler",
+      },
+      layerTwo: {
+        title: "h3.news-titler",
+        jquerySelector: ".topnewstext",
+        locationIndex: 0,
+        dateIndex: 1,
+        timeIndex: 2,
+      },
+    }
+  ),
+];
 
 const hjud: HouseJob<V1> = jobCreator(
   HouseCommittees.HOUSE_JUDICIARY_COMMITTEE,
@@ -762,6 +764,9 @@ export const houseJobs: (
   | HouseJob<V5>
   | HouseJob<V6>
 )[] = [
+  smbs,
+  ...fisv,
+  hrle,
   ...admn,
   ...hfac,
   hagc,
@@ -780,7 +785,4 @@ export const houseJobs: (
   //// USE DIFFERENT SCRAPERS
   //...hapc,
   //...hbuc,
-  //...fisv,
-  //hrle,
-  //smbs,
 ];
